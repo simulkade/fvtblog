@@ -1,0 +1,61 @@
+<h1>An introduction to a Matlab FVM (toy) toolbox</h1>
+<p>For some reasons, I had to solve a few PDE's including single/multi phase flow in porous media, heat transfer in saturated porous media, multi-component mass transfer, and so on. My job never included the development of numerical method. In fact, I was supposed to come up with simple and useful models for the physical system that I was/am studying. Solving those models could be done in PDE solver of my choice. At the end of the day, I chose to write my own codes in Matlab.</p>
+<h2>Why [in general]?</h2>
+<p>Let me count my reasons here. In case you don't like to listen to me bragging about it, you can skip to the middle of this post.</p>
+<h3>Black-boxes</h3>
+<p>These numerical solvers, in particular <a href="http://www.comsol.com">COMSOL</a> always was like a black-box to me. I could not understand its error messages, which was frustrating, and even when it generated nice results (which most of the times happens), I was really unable to have a physical feeling for it. I will talk about the physical feeling later, and don't expect a post about love-making.</p>
+<h3>Boundary conditions</h3>
+<p>For some reason, choosing and handling boundary conditions is not explained in books, or papers, or lectures. The same situation applies to the documentation of PDE solvers. Id it really that difficult for you guys to bring us a general Robin boundary condition?</p>
+<h3>Geometry</h3>
+<p>Honestly, one of the most attractive features of PDE solvers is the graphical pre-processor (with all sort of different mesh generation techniques) and CAD modules. For me, with the simple rectangular or cylindrical geometries of my experimental set-up, there was no need of a fancy pre-processor.</p>
+<h3>Learning/Teaching</h3>
+<p>I'll be doing a lot of teaching soon, so I needed to learn numerical methods. What's better than learning by doing? Now, I can share my experiences and my coode with my students.</p>
+<h2>Why [in particular]?</h2>
+<p>I needed a mass conservative scheme (e.g., <a href="http://en.wikipedia.org/wiki/Finite_volume_method">finite volume method</a>), which is implemented in an understandable language (yes, I know. C++ is quite beautiful and elegant and understandable even for a kid with the right genes, but I prefer Matlab), with some flexibility for specifying boundary conditions and changing the physics. I actually found a code. It's called <a href="http://www.ctcms.nist.gov/fipy/">FiPy</a>. But I was already comfortable with Matlab and, don't tell anyone, I couldn't understand <a href="https://www.python.org/">Python</a> and <a href="http://www.numpy.org/">NumPy</a>. So having FiPy's syntax in mind I decided to write my own code in Matlab. I think it is in good enough shape to be shared with other FVM/Matlab users.</p>
+<h2>Really! Why?</h2>
+<p>For most of our important PDE's in chemical and petroleum engineering (did I mention that I'm a chemical/petroleum engineer?) we have analytical solutions. Also, most of the experiments that we do in the lab can be modeled with a one dimensional PDE. However, so many curious things happen when we go to a two- or three-dimensional domain. I wanted to have something, like FiPy, to make me able to solve a 1D equation, verify it by comparing it to my analytical solution or experimental data, and switch it to 2D and 3D domains without too many modifications. I have it now.</p>
+<h2>What do we solve?</h2>
+<p>We solve this general form of transient convection-diffusion equation:</p>
+<p>$$ \alpha\frac{\partial\phi}{\partial t}+\nabla.\left(\mathbf{u}\phi\right)+\nabla.\left(-D\nabla\phi\right)+\beta\phi=\gamma$$ </p>
+<p>with the following general (Robin) boundary condition:</p>
+<p>$$a\nabla\phi.\mathbf{n}+b\phi=c.$$</p>
+<p>All of the coefficients can be defined explicitly for each control volume or on the surface of a control volume.</p>
+<h2>Where to find/How to use 'the code'?</h2>
+<p>You can download the code from this github repository (click on the <code>download zip</code> button): <a href="https://github.com/simulkade/FVTool">FVTool</a>
+Or alternatively, if you are on linux (and hopefully you are), use the command</p>
+<pre class="code literal-block">git clone https://github.com/simulkade/FVTool
+</pre>
+
+
+<h3>How to start</h3>
+<p>Start <a href="http://www.matlab.com">Matlab</a> (or <a href="http://www.gnu.org/software/octave/">Octave</a>), go to the <code>FVTool</code> folder, and type </p>
+<pre class="code literal-block"><span class="n">FVToolStartUp</span> 
+</pre>
+
+
+<p>You must see a few messages and finally you should see <code>FiniteVolumeToolbox has started successfully.</code> in Matlab command prompt.
+With the following command, you can see a short document that introduces you to the code:</p>
+<pre class="code literal-block"><span class="n">showdemo</span> <span class="n">FVTdemo</span>
+</pre>
+
+
+<p>If you want to jump into it, you can run the following script to solve a diffusion equation with Dirichlet boundary conditions:</p>
+<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span>
+<span class="n">L</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>  <span class="c">% domain length</span>
+<span class="n">Nx</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c">% number of cells</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh3D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
+<span class="n">BC</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="c">% all Neumann boundary condition structure</span>
+<span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="c">% Dirichlet for the left boundary</span>
+<span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="c">% right boundary</span>
+<span class="n">D_val</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c">% value of the diffusion coefficient</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_val</span><span class="p">);</span> <span class="c">% assign the diffusion coefficient to the cells</span>
+<span class="n">D_face</span> <span class="p">=</span> <span class="n">harmonicMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span> <span class="c">% calculate harmonic average of the diffusion coef on the cell faces</span>
+<span class="n">Mdiff</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_face</span><span class="p">);</span> <span class="c">% matrix of coefficients for the diffusion term</span>
+<span class="p">[</span><span class="n">Mbc</span><span class="p">,</span> <span class="n">RHSbc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">BC</span><span class="p">);</span> <span class="c">% matix of coefficients and RHS vector for the BC</span>
+<span class="n">M</span> <span class="p">=</span> <span class="n">Mdiff</span> <span class="o">+</span> <span class="n">Mbc</span><span class="p">;</span> <span class="c">% matrix of cefficients for the PDE</span>
+<span class="n">c</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">M</span><span class="p">,</span> <span class="n">RHSbc</span><span class="p">);</span> <span class="c">% send M and RHS to the solver</span>
+<span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c">% visualize the results</span>
+</pre>
+
+
+<p>You can find more examples <a href="https://github.com/simulkade/FVTool/tree/master/Examples/Tutorial">here</a>.</p>

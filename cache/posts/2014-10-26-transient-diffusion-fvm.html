@@ -1,0 +1,104 @@
+<h2>A time dependent diffusion problem</h2>
+<p>In my last post, I promised to solve a time dependent conduction problem. Indeed I tried to keep my promise by writing a full post about single phase compressible flow in porous media. But in the middle of writing, I noticed that there are too many things that need to be clarified before we can jump into that problem. Therefore, I decided to hold my horses and only solve a simple time-dependent diffusion problem. I this post, you are going to learn how to define the initial conditions and use a <code>for</code> loop for time steps.</p>
+<h2>This blog's icon</h2>
+<p>If you look carefully at this open tab in your browser, you see a colorful icon that looks like a bad design for a gay flag. It is nothing but a square domain, which has been initially at a concentration c=1.0, and suddenly its boundaries are exposed to an environment at a zero concentration, c=0.0 and mass starts moving out of the domain only by diffusion mechanism. As simple as that!</p>
+<h2>We gaan beginnen</h2>
+<p>The equation for this problem reads </p>
+<p>$$\frac{\partial c}{\partial t} +\nabla.(-D \nabla c) = 0$$ </p>
+<p>where <em>D</em> [m^2/s] is the diffusion coefficient and <em>c</em> [mol/m^3] is the concentration. The boundary conditions are all Dirichlet, i.e.,</p>
+<p>$$ c=0 $$</p>
+<p>The coding steps are as always in the following sequence:</p>
+<ol>
+<li>Geometry and mesh</li>
+<li>Boundary condition</li>
+<li>Initial condition</li>
+<li>Matrix of coefficients</li>
+<li>Linear solver</li>
+</ol>
+<p>The geometry can be defined as</p>
+<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span> <span class="n">close</span> <span class="n">all</span><span class="p">;</span>
+<span class="n">L</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] length of the domain</span>
+<span class="n">H</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] height of the domain</span>
+<span class="n">Nx</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in x direction</span>
+<span class="n">Ny</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in y direction</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh2D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">H</span><span class="p">);</span> <span class="c">% create the mesh</span>
+</pre>
+
+
+<p>Then the boundary conditions are defined. Just as a reminder, the boundaries are defined by the following general relation:</p>
+<p>$$ a \nabla \phi.\mathbf{n}+b \phi = c$$</p>
+<p>The code for specifying the boundary condition and finding the matrix of coefficients for the boundary nodes is written as</p>
+<pre class="code literal-block"><span class="n">bc</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">[</span><span class="n">M_bc</span><span class="p">,</span> <span class="n">RHS_bc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span>
+</pre>
+
+
+<p>Now is time to learn something new: defining initial conditions. We remember that the variables are build over the domain using the <code>createCellVariable</code> function. We used it before to assign a conductivity value to each cell in the domain. We don't need to assign transfer coefficients to the ghost cells. Now, if we need to define a cell variable which also has value on the ghost cell. The value on the ghost cells should be consistent with the boundary condition. Therefore, we send the boundary condition as an extra input the the <code>createCellVariable</code> function. The function will take care of the rest!
+One more thing. The initial condition must be assigned to a structure that is called <code>Old</code>. In fact, the <code>transitionTerm</code> that returns the matrix of coefficients for the transient term needs the initial conditon to be written this way.</p>
+<pre class="code literal-block"><span class="n">D_val</span> <span class="p">=</span> <span class="mf">1e-5</span><span class="p">;</span> <span class="c">% [m^2/s] diffusion coefficient</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_val</span><span class="p">);</span> <span class="c">% assign diff. coef. to each cell</span>
+<span class="n">D_face</span> <span class="p">=</span> <span class="n">geometricMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span> <span class="c">% average of diff. coef. on cell faces</span>
+<span class="n">M_diff</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_face</span><span class="p">);</span>
+<span class="n">c_init</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="c">% [mol/m^3] initial concentration</span>
+<span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_init</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span> <span class="c">% initial condition</span>
+<span class="n">alfa</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="c">% it will be required later</span>
+</pre>
+
+
+<p>The next step is to define the time steps and the final time of the simulation. Normally, for a diffusion problem, we can choose a time step based on the length of the domain and the diffusion coefficient, i.e., a fraction of $L^2/D$. In Matlab, we can write</p>
+<pre class="code literal-block"><span class="n">t_end</span> <span class="p">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">L</span>^<span class="mi">2</span><span class="o">/</span><span class="n">D_val</span><span class="p">;</span> <span class="c">% [s] final time</span>
+<span class="n">dt</span> <span class="p">=</span> <span class="n">t_end</span><span class="o">/</span><span class="mi">100</span><span class="p">;</span> <span class="c">% [s] time step </span>
+</pre>
+
+
+<p>And the final part. We have to solve the PDE literally step by step, in a loop. We start from the initial condition (t=0) and find the concentration profile for t=dt. Then we use the new concentration profile as the initial condition and solve the PDE for the next time step and so on. The Matlab code for this procedure reads</p>
+<pre class="code literal-block"><span class="k">for</span> <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">t_end</span>
+        <span class="c">% This part must be inside the time loop:</span>
+    <span class="p">[</span><span class="n">M_trans</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="p">]</span> <span class="p">=</span> <span class="n">transientTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">alfa</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="n">c_new</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">M_bc</span><span class="o">+</span><span class="n">M_trans</span><span class="o">-</span><span class="n">M_diff</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="o">+</span><span class="n">RHS_bc</span><span class="p">);</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">c_new</span><span class="p">;</span> <span class="c">% replace the old value with the new time step</span>
+    <span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_new</span><span class="p">);</span> <span class="n">title</span><span class="p">([</span><span class="s">&#39;t= &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="s">&#39; s&#39;</span><span class="p">]);</span>
+        <span class="n">drawnow</span><span class="p">;</span>
+<span class="k">end</span>
+</pre>
+
+
+<p>The code will show you how the material escapes the square domain through the boundaries. We can do a bit of mass balance test on the whole thing, which I will explain later.<br />
+This is the code in one piece:</p>
+<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span> <span class="n">close</span> <span class="n">all</span><span class="p">;</span>
+<span class="n">L</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] length of the domain</span>
+<span class="n">H</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] height of the domain</span>
+<span class="n">Nx</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in x direction</span>
+<span class="n">Ny</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in y direction</span>
+<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh2D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">H</span><span class="p">);</span> <span class="c">% create the mesh</span>
+<span class="n">bc</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">[</span><span class="n">M_bc</span><span class="p">,</span> <span class="n">RHS_bc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span>
+<span class="n">D_val</span> <span class="p">=</span> <span class="mf">1e-5</span><span class="p">;</span> <span class="c">% [m^2/s] diffusion coefficient</span>
+<span class="n">D</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_val</span><span class="p">);</span> <span class="c">% assign diff. coef. to each cell</span>
+<span class="n">D_face</span> <span class="p">=</span> <span class="n">geometricMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span> <span class="c">% average of diff. coef. on cell faces</span>
+<span class="n">M_diff</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_face</span><span class="p">);</span>
+<span class="n">c_init</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="c">% [mol/m^3] initial concentration</span>
+<span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_init</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span> <span class="c">% initial condition</span>
+<span class="n">alfa</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="c">% it will be required later</span>
+<span class="n">t_end</span> <span class="p">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">L</span>^<span class="mi">2</span><span class="o">/</span><span class="n">D_val</span><span class="p">;</span> <span class="c">% [s] final time</span>
+<span class="n">dt</span> <span class="p">=</span> <span class="n">t_end</span><span class="o">/</span><span class="mi">100</span><span class="p">;</span> <span class="c">% [s] time step </span>
+<span class="k">for</span> <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">t_end</span>
+    <span class="p">[</span><span class="n">M_trans</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="p">]</span> <span class="p">=</span> <span class="n">transientTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">alfa</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="n">c_new</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">M_bc</span><span class="o">+</span><span class="n">M_trans</span><span class="o">-</span><span class="n">M_diff</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="o">+</span><span class="n">RHS_bc</span><span class="p">);</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">c_new</span><span class="p">;</span>
+    <span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_new</span><span class="p">);</span> <span class="n">title</span><span class="p">([</span><span class="s">&#39;t= &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="s">&#39; s&#39;</span><span class="p">]);</span>
+        <span class="n">drawnow</span><span class="p">;</span>
+<span class="k">end</span>
+</pre>
+
+
+<p>One of the frames in your final result should look like this:
+<img alt="2d diffusion fvm" src="/trans_diff.png" /></p>
