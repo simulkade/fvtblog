@@ -7173,7 +7173,6 @@ article.post-micro {
     margin: 0;
 }
 
-
 .clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
 .clearfix:after{clear:both}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}
@@ -7381,15 +7380,23 @@ body {
   font-family: "Arimo", sans-serif;
   font-size: 16px;
   line-height: 1.5em;
-  color: #333333;
+  color: #111111;
   background-color: #ffffff;
   text-align: justify;
   border-bottom: 1px solid #e1e1e8;
 }
 
 /* color of links, like post titles */
-a { color: #555; }
-a:hover { color: #009999; }
+a { 
+  color: #006B6B; 
+}
+a:hover { 
+  color: #009999; 
+}
+
+a:visited {
+  color: #006699
+}
 
 .body-content {
   margin-left: 10px;
@@ -7432,7 +7439,7 @@ pre, code {
 div.prompt {
   padding: 0.6em;
   font-size: 13px;
-  background-color: #E9E9E9;
+  background-color: #FFFFFF;
   margin-right: 1em;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -7454,8 +7461,9 @@ div.output_area pre {
 }
 
 div.text_cell_render {
-  padding: 0px;
-  color: #333333;
+  /*padding: 0px;*/
+  color: #111111;
+  margin-left: -23px;
 }
 
 .rendered_html p {
@@ -7522,6 +7530,18 @@ h1 {
   margin-top: 40px;
   font-size:170%;
   color: #006600;
+}
+
+h2 {
+  font-size: 140%;
+}
+
+h3 {
+  font-size: 125%;
+}
+
+h4 {
+  font-size: 110%;
 }
 
 .navbar-inverse { background-color: #009999}

@@ -5,15 +5,14 @@ article: http://ogp.me/ns/article#
 " lang="en">
     <head>
     <meta charset="utf-8">
-    <meta name="description" content="A finite volume tool in Matlab and Julia">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FVTool | FVTool</title>
+    <title>Solving nonlinear PDEs with FVM | FVTool</title>
 
-                <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 
-      <link rel="canonical" href="http://fvt.simulkade.com/index.html">
+      <link rel="canonical" href="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html">
 
 
 
@@ -33,10 +32,25 @@ MathJax.Hub.Config({
 });
 </script>
 
-        <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+        <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 
     
 
+    
+    <meta name="author" content="AAE">
+        <meta property="og:site_name" content="FVTool">
+    <meta property="og:title" content="Solving nonlinear PDEs with FVM">
+    <meta property="og:url" content="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html">
+    <meta property="og:description" content="There are many cases where the transfer coefficient in the convection-diffusion equations is a function of the independent variable. This makes the PDE nonlinear. While working on my thesis, I realize">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2015-04-06T15:51:37+01:00">
+           <meta property="article:tag" content="diffusion">
+           <meta property="article:tag" content="direct substitution">
+           <meta property="article:tag" content="Newton">
+           <meta property="article:tag" content="nonlinear PDE">
+
+    
+    
 
 </head>
 <body>
@@ -66,13 +80,13 @@ MathJax.Hub.Config({
 <a href="http://www.simulkade.com">Simulkade</a>
                 </li>
 <li>
-<a href="archive.html">Archive</a>
+<a href="../archive.html">Archive</a>
                 </li>
 <li>
-<a href="categories/index.html">Tags</a>
+<a href="../categories/index.html">Tags</a>
                 </li>
 <li>
-<a href="rss.xml">RSS feed</a>
+<a href="../rss.xml">RSS feed</a>
 
                 
             </li>
@@ -91,6 +105,9 @@ MathJax.Hub.Config({
 
 
             <ul class="nav navbar-nav navbar-right">
+    <li>
+    <a href="2015-04-06-solving-nonlinear-pdes-with-fvm.ipynb" id="sourcelink">Source</a>
+    </li>
                 
             </ul>
         </div>
@@ -106,20 +123,24 @@ MathJax.Hub.Config({
         <!--Body content-->
         <div class="row">
             
-<div class="postindex">
-    <article class="h-entry post-text">
-    <header>
-        <h1 class="p-name entry-title"><a href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html" class="u-url">Solving nonlinear PDEs with FVM</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
+        <header>
+            <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Solving nonlinear PDEs with FVM</a></h1>
+
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
-            <p class="dateline"><a href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html" rel="bookmark"><time class="published dt-published" datetime="2015-04-06T15:51:37+01:00" itemprop="datePublished" title="Publication date">2015-04-06 15:51</time></a></p>
-                <p class="commentline">            <a href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#disqus_thread" data-disqus-identifier="cache/posts/2015-03-23-solving-nonlinear-pdes-with-fvm.html">Comments</a>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-04-06T15:51:37+01:00" itemprop="datePublished" title="2015-04-06 15:51">2015-04-06 15:51</time></a></p>
+                <p class="commentline">            <a href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#disqus_thread" data-disqus-identifier="cache/posts/2015-03-23-solving-nonlinear-pdes-with-fvm.html">Comments</a>
 
 
-        </p>
-</div>
+                    </p>
+<p class="sourceline"><a href="2015-04-06-solving-nonlinear-pdes-with-fvm.ipynb" id="sourcelink">Source</a></p>
+
+        </div>
+        
     </header>
-    <div class="e-content entry-content">
+
+    <div class="e-content entry-content" itemprop="articleBody text">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -129,17 +150,17 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are many cases where the transfer coefficient in the convection-diffusion equations is a function of the independent variable. This makes the PDE nonlinear. While working on my thesis, I realized that it is not that difficult to use the Taylor expansion to linearize the nonlinear terms in a PDE. Here, I'm going to give a simple example. In another post, I will explain how the same idea can be used to numerically solve the Buckley-Leverett equation.</p>
-<h3 id="The-PDE">The PDE<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#The-PDE">¶</a>
+<h3 id="The-PDE">The PDE<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#The-PDE">¶</a>
 </h3>
 <p>I'm going to try a simple one here. I say try because I'm actually making it up right now. The equation reads $$\frac{\partial\phi}{\partial t}+\nabla . (-D\nabla \phi) =0$$ where $$D=D_0(1+\phi^2).$$ It means that the diffusion coefficient is increased when the concentration of the solute increases.<br>
 To linearize this equation, I assume that $\phi$ and $\nabla \phi$ are independent variables. Using Taylor expansion around a point $\phi_0$, we can obtain the following general form: $$f\left(\phi\right)\nabla \phi=f\left(\phi_{0}\right)\nabla \phi+\nabla \phi_{0}\left(\frac{\partial f}{\partial \phi}\right)_{\phi_{0}}\left(\phi-\phi_{0}\right).$$ In our case, this equation simplifies to $$D_0(1+\phi^2)\nabla \phi=D_0(1+\phi_0^2)\nabla \phi+2D_0\phi_0\nabla \phi_0(\phi-\phi_0).$$ Putting back everythin together, we obtain this linearized form for our PDE $$\frac{\partial\phi}{\partial t}+\nabla.(-D_{0}(1+\phi_{0}^{2})\nabla\phi)+\nabla.(-2D_{0}\phi_{0}\nabla\phi_{0}\phi)=\nabla.(-2D_{0}\phi_{0}\nabla\phi_{0}\phi_{0}).$$ Don't freak out! This equation is actually quite simple. By linearizing, we have added a linear convection term to our nonlinear diffusion equation. This equation is still an approximation of the real PDE. We have to solve the linear equation for $\phi$ by initializing $\phi_0$. Then, we assign the new value of $\phi$ to $\phi_0$ until it converges to a solution. The question that still remains is that "is this really a good idea to make a diffusion equation more complicated by adding a convection term to it?".</p>
 <!-- TEASER_END -->
 
 
-<h3 id="The-solution-procedure">The solution procedure<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#The-solution-procedure">¶</a>
+<h3 id="The-solution-procedure">The solution procedure<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#The-solution-procedure">¶</a>
 </h3>
 <p>Solving this equation is done in two loops. The outer loop is for the time steps, and the inner loop is for the nonlinear equation. We will assemple an equation which looks like this: $$\text{Transient}(\Delta t,\phi)-\text{Diffusion}(D(\phi_0),\phi)+\text{Convection}(\mathbf{u}(\phi_0),\phi)=\text{divergence}(D(\phi_0), \nabla\phi_0)$$</p>
-<h3 id="Implementation-in-JFVM">Implementation in JFVM<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Implementation-in-JFVM">¶</a>
+<h3 id="Implementation-in-JFVM">Implementation in JFVM<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Implementation-in-JFVM">¶</a>
 </h3>
 <p>Here, I'll implement the procedure in <a href="http://github.com/simulkade/JFVM.jl">JFVM</a>. The same procedure can be done in <a href="http://github.com/simulkade/FVTool">FVtool</a>.</p>
 
@@ -312,29 +333,29 @@ To linearize this equation, I assume that $\phi$ and $\nabla \phi$ are independe
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The solution looks quite good. The diffusion coefficient is higher at higher concentrations, and it can be clearly observed in the above concentration profile (if you compare it with a diffusion problem with constant diffusion coefficient, in your head).</p>
-<h3 id="Some-questions">Some questions<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Some-questions">¶</a>
+<h3 id="Some-questions">Some questions<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Some-questions">¶</a>
 </h3>
 <p>The convection term that appears after linearization of the problem has a velocity term, which reads $$\mathbf{u}(\phi_0)=−2.0D_0\phi_0\nabla\phi_0$$ I have written a function, called `gradientTerm` which gives you the value of the gradient on the cell faces. This gradient is multiplied by a term that needs to be averaged on each cell face. Here, I have calculated the arithmetic average of $\phi_0$ using a function called suprise suprise <code>linearMean</code>. This is of course one way of doing it. The other ways are <code>geometricMean</code>, <code>harmonicMean</code>, <code>upwindMean</code>, <code>tvdMean</code>, and <code>aritheticMean</code>. Here, we will discuss them.</p>
-<h3 id="Averaging-techniques-for-the-face-values-in-FVM">Averaging techniques for the face values in FVM<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Averaging-techniques-for-the-face-values-in-FVM">¶</a>
+<h3 id="Averaging-techniques-for-the-face-values-in-FVM">Averaging techniques for the face values in FVM<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Averaging-techniques-for-the-face-values-in-FVM">¶</a>
 </h3>
 <p>The following figure shows two neigbor cells with different length and values.<br>
-<img src="averaging_pic.png" alt="neighbor cells FVM">
+<img src="../averaging_pic.png" alt="neighbor cells FVM">
 The avearagin term that are used in JFVM are as follows:</p>
-<h4 id="Linear-mean">Linear mean<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Linear-mean">¶</a>
+<h4 id="Linear-mean">Linear mean<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Linear-mean">¶</a>
 </h4>
 <p>It is equivalent to a linear interpolation or the lever rule. It reads $$\phi_{face}=\frac{\Delta x_1\phi_2+\Delta x_2\phi_1}{\Delta x_1+\Delta x_2}$$</p>
-<h4 id="Arithmetic-mean">Arithmetic mean<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Arithmetic-mean">¶</a>
+<h4 id="Arithmetic-mean">Arithmetic mean<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Arithmetic-mean">¶</a>
 </h4>
 <p>The value of each cell is weighted by its length: $$\phi_{face}=\frac{\Delta x_1\phi_1+\Delta x_2\phi_2}{\Delta x_1+\Delta x_2}$$</p>
-<h4 id="Geometric-mean">Geometric mean<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Geometric-mean">¶</a>
+<h4 id="Geometric-mean">Geometric mean<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Geometric-mean">¶</a>
 </h4>
 <p>It reads $$\phi_{face}=\exp\left(\frac{\Delta x_1\log(\phi_1)+\Delta x_2\log(\phi_2)}{\Delta x_1+\Delta x_2}\right)$$</p>
-<h4 id="Harmonic-mean">Harmonic mean<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Harmonic-mean">¶</a>
+<h4 id="Harmonic-mean">Harmonic mean<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Harmonic-mean">¶</a>
 </h4>
 <p>It reads $$\phi_{face}=\frac{\Delta x_1+\Delta x_2}{\Delta x_1/\phi_1+\Delta x_2/\phi_2}$$
 Note that if the value of one of the cells is zero, the geometric and harmonic means are also equal to zero.<br>
 These methods have different applications for different ptoblems. We will discuss them in future posts.</p>
-<h3 id="Direct-substitution">Direct substitution<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Direct-substitution">¶</a>
+<h3 id="Direct-substitution">Direct substitution<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Direct-substitution">¶</a>
 </h3>
 <p>The diffusion problem that we solved above can also be solved using a direct substitution method. Here, we don't use the derivatives and no linearization is required. The code is written here:</p>
 
@@ -470,7 +491,7 @@ These methods have different applications for different ptoblems. We will discus
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Show-and-compare-the-results">Show and compare the results<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Show-and-compare-the-results">¶</a>
+<h3 id="Show-and-compare-the-results">Show and compare the results<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Show-and-compare-the-results">¶</a>
 </h3>
 <p>Here, I'm plotting the results of the Newton and the direct substitution methods for comparison.</p>
 
@@ -524,7 +545,7 @@ These methods have different applications for different ptoblems. We will discus
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Conclusion">Conclusion<a class="anchor-link" href="posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html#Conclusion">¶</a>
+<h3 id="Conclusion">Conclusion<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Conclusion">¶</a>
 </h3>
 <p>The final results shows that we can linearize a nonlinear PDE, relatively easily and solve the equations using a linear PDE solver. No difference is observed between the final results of the direct substitution method (with no linearization) and the Newton method (with a linearized PDE). We can also observe that, as expected, the Newton method is relatively faster.</p>
 
@@ -535,304 +556,47 @@ These methods have different applications for different ptoblems. We will discus
   </div>
 
     </div>
-    </article>
-    <article class="h-entry post-text">
-    <header>
-        <h1 class="p-name entry-title"><a href="posts/2015-03-29-switched-to-nikola.html" class="u-url">Switched to Nikola</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
-            <p class="dateline"><a href="posts/2015-03-29-switched-to-nikola.html" rel="bookmark"><time class="published dt-published" datetime="2015-03-29T17:26:06+02:00" itemprop="datePublished" title="Publication date">2015-03-29 17:26</time></a></p>
-                <p class="commentline">            <a href="posts/2015-03-29-switched-to-nikola.html#disqus_thread" data-disqus-identifier="cache/posts/2015-03-29-switched-to-nikola.html">Comments</a>
+    <aside class="postpromonav">
+    <nav>
+            <ul itemprop="keywords" class="tags">
+           <li><a class="tag p-category" href="../categories/diffusion.html" rel="tag">diffusion</a></li>
+           <li><a class="tag p-category" href="../categories/direct-substitution.html" rel="tag">direct substitution</a></li>
+           <li><a class="tag p-category" href="../categories/newton.html" rel="tag">Newton</a></li>
+           <li><a class="tag p-category" href="../categories/nonlinear-pde.html" rel="tag">nonlinear PDE</a></li>
+        </ul>
+
+            <ul class="pager">
+            <li class="previous">
+                <a href="2015-03-29-switched-to-nikola.html" rel="prev" title="Switched to Nikola">Previous post</a>
+            </li>
+        </ul>
+
+    </nav>
+    </aside>
+        <section class="comments">
+        <h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="fvtool",
+            disqus_url="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html",
+        disqus_title="Solving nonlinear PDEs with FVM",
+        disqus_identifier="cache/posts/2015-03-23-solving-nonlinear-pdes-with-fvm.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </p>
-</div>
-    </header>
-    <div class="e-content entry-content">
-    <p>Today, I switched this blog from <a href="posts/www.octopress.org">Octopress</a> to <a href="posts/www.getnikola.com">Nikola</a>. I did it mostly because I'm more comfortable with Python, and of course the new exciting version of ipython, which is now called <a href="https://jupyter.org/">Jupyter</a>. I think I'm going to stick to this format for a while.</p>
-    </div>
-    </article>
-    <article class="h-entry post-text">
-    <header>
-        <h1 class="p-name entry-title"><a href="posts/2014-10-26-transient-diffusion-fvm.html" class="u-url">2D transient diffusion equation; numerical FVM solution</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
-            <p class="dateline"><a href="posts/2014-10-26-transient-diffusion-fvm.html" rel="bookmark"><time class="published dt-published" datetime="2014-10-26T22:35:13+01:00" itemprop="datePublished" title="Publication date">2014-10-26 22:35</time></a></p>
-                <p class="commentline">            <a href="posts/2014-10-26-transient-diffusion-fvm.html#disqus_thread" data-disqus-identifier="cache/posts/2014-10-26-transient-diffusion-fvm.html">Comments</a>
-
-
-        </p>
-</div>
-    </header>
-    <div class="e-content entry-content">
-    <div>
-<h3>A time dependent diffusion problem</h3>
-<p>In my last post, I promised to solve a time dependent conduction problem. Indeed I tried to keep my promise by writing a full post about single phase compressible flow in porous media. But in the middle of writing, I noticed that there are too many things that need to be clarified before we can jump into that problem. Therefore, I decided to hold my horses and only solve a simple time-dependent diffusion problem. I this post, you are going to learn how to define the initial conditions and use a <code>for</code> loop for time steps.</p>
-<h3>This blog's icon</h3>
-<p>If you look carefully at this open tab in your browser, you see a colorful icon that looks like a bad design for a gay flag. It is nothing but a square domain, which has been initially at a concentration c=1.0, and suddenly its boundaries are exposed to an environment at a zero concentration, c=0.0 and mass starts moving out of the domain only by diffusion mechanism. As simple as that!</p>
-<h3>We gaan beginnen</h3>
-<p>The equation for this problem reads </p>
-<p>$$\frac{\partial c}{\partial t} +\nabla.(-D \nabla c) = 0$$ </p>
-<p>where <em>D</em> [m^2/s] is the diffusion coefficient and <em>c</em> [mol/m^3] is the concentration. The boundary conditions are all Dirichlet, i.e.,</p>
-<p>$$ c=0 $$</p>
-<p>The coding steps are as always in the following sequence:</p>
-<ol>
-<li>Geometry and mesh</li>
-<li>Boundary condition</li>
-<li>Initial condition</li>
-<li>Matrix of coefficients</li>
-<li>Linear solver</li>
-</ol>
-<p>The geometry can be defined as</p>
-<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span> <span class="n">close</span> <span class="n">all</span><span class="p">;</span>
-<span class="n">L</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] length of the domain</span>
-<span class="n">H</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] height of the domain</span>
-<span class="n">Nx</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in x direction</span>
-<span class="n">Ny</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in y direction</span>
-<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh2D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">H</span><span class="p">);</span> <span class="c">% create the mesh</span>
-</pre>
-
-
-<p>Then the boundary conditions are defined. Just as a reminder, the boundaries are defined by the following general relation:</p>
-<p>$$ a \nabla \phi.\mathbf{n}+b \phi = c$$</p>
-<p>The code for specifying the boundary condition and finding the matrix of coefficients for the boundary nodes is written as</p>
-<pre class="code literal-block"><span class="n">bc</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="p">[</span><span class="n">M_bc</span><span class="p">,</span> <span class="n">RHS_bc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span>
-</pre>
-
-
-<p>Now is time to learn something new: defining initial conditions. We remember that the variables are build over the domain using the <code>createCellVariable</code> function. We used it before to assign a conductivity value to each cell in the domain. We don't need to assign transfer coefficients to the ghost cells. Now, if we need to define a cell variable which also has value on the ghost cell. The value on the ghost cells should be consistent with the boundary condition. Therefore, we send the boundary condition as an extra input the the <code>createCellVariable</code> function. The function will take care of the rest!
-One more thing. The initial condition must be assigned to a structure that is called <code>Old</code>. In fact, the <code>transitionTerm</code> that returns the matrix of coefficients for the transient term needs the initial conditon to be written this way.</p>
-<pre class="code literal-block"><span class="n">D_val</span> <span class="p">=</span> <span class="mf">1e-5</span><span class="p">;</span> <span class="c">% [m^2/s] diffusion coefficient</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_val</span><span class="p">);</span> <span class="c">% assign diff. coef. to each cell</span>
-<span class="n">D_face</span> <span class="p">=</span> <span class="n">geometricMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span> <span class="c">% average of diff. coef. on cell faces</span>
-<span class="n">M_diff</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_face</span><span class="p">);</span>
-<span class="n">c_init</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="c">% [mol/m^3] initial concentration</span>
-<span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_init</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span> <span class="c">% initial condition</span>
-<span class="n">alfa</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="c">% it will be required later</span>
-</pre>
-
-
-<p>The next step is to define the time steps and the final time of the simulation. Normally, for a diffusion problem, we can choose a time step based on the length of the domain and the diffusion coefficient, i.e., a fraction of $L^2/D$. In Matlab, we can write</p>
-<pre class="code literal-block"><span class="n">t_end</span> <span class="p">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">L</span>^<span class="mi">2</span><span class="o">/</span><span class="n">D_val</span><span class="p">;</span> <span class="c">% [s] final time</span>
-<span class="n">dt</span> <span class="p">=</span> <span class="n">t_end</span><span class="o">/</span><span class="mi">100</span><span class="p">;</span> <span class="c">% [s] time step </span>
-</pre>
-
-
-<p>And the final part. We have to solve the PDE literally step by step, in a loop. We start from the initial condition (t=0) and find the concentration profile for t=dt. Then we use the new concentration profile as the initial condition and solve the PDE for the next time step and so on. The Matlab code for this procedure reads</p>
-<pre class="code literal-block"><span class="k">for</span> <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">t_end</span>
-        <span class="c">% This part must be inside the time loop:</span>
-    <span class="p">[</span><span class="n">M_trans</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="p">]</span> <span class="p">=</span> <span class="n">transientTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">alfa</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
-    <span class="n">c_new</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">M_bc</span><span class="o">+</span><span class="n">M_trans</span><span class="o">-</span><span class="n">M_diff</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="o">+</span><span class="n">RHS_bc</span><span class="p">);</span>
-    <span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">c_new</span><span class="p">;</span> <span class="c">% replace the old value with the new time step</span>
-    <span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_new</span><span class="p">);</span> <span class="n">title</span><span class="p">([</span><span class="s">'t= '</span> <span class="n">num2str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="s">' s'</span><span class="p">]);</span>
-        <span class="n">drawnow</span><span class="p">;</span>
-<span class="k">end</span>
-</pre>
-
-
-<p>The code will show you how the material escapes the square domain through the boundaries. We can do a bit of mass balance test on the whole thing, which I will explain later.<br>
-This is the code in one piece:</p>
-<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span> <span class="n">close</span> <span class="n">all</span><span class="p">;</span>
-<span class="n">L</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] length of the domain</span>
-<span class="n">H</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% [m] height of the domain</span>
-<span class="n">Nx</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in x direction</span>
-<span class="n">Ny</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of grids in y direction</span>
-<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh2D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">H</span><span class="p">);</span> <span class="c">% create the mesh</span>
-<span class="n">bc</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">bc</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span>
-<span class="p">[</span><span class="n">M_bc</span><span class="p">,</span> <span class="n">RHS_bc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span>
-<span class="n">D_val</span> <span class="p">=</span> <span class="mf">1e-5</span><span class="p">;</span> <span class="c">% [m^2/s] diffusion coefficient</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_val</span><span class="p">);</span> <span class="c">% assign diff. coef. to each cell</span>
-<span class="n">D_face</span> <span class="p">=</span> <span class="n">geometricMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span> <span class="c">% average of diff. coef. on cell faces</span>
-<span class="n">M_diff</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_face</span><span class="p">);</span>
-<span class="n">c_init</span> <span class="p">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="c">% [mol/m^3] initial concentration</span>
-<span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_init</span><span class="p">,</span> <span class="n">bc</span><span class="p">);</span> <span class="c">% initial condition</span>
-<span class="n">alfa</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="c">% it will be required later</span>
-<span class="n">t_end</span> <span class="p">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">L</span>^<span class="mi">2</span><span class="o">/</span><span class="n">D_val</span><span class="p">;</span> <span class="c">% [s] final time</span>
-<span class="n">dt</span> <span class="p">=</span> <span class="n">t_end</span><span class="o">/</span><span class="mi">100</span><span class="p">;</span> <span class="c">% [s] time step </span>
-<span class="k">for</span> <span class="n">t</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="n">dt</span><span class="p">:</span><span class="n">t_end</span>
-    <span class="p">[</span><span class="n">M_trans</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="p">]</span> <span class="p">=</span> <span class="n">transientTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">alfa</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
-    <span class="n">c_new</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">M_bc</span><span class="o">+</span><span class="n">M_trans</span><span class="o">-</span><span class="n">M_diff</span><span class="p">,</span> <span class="n">RHS_trans</span><span class="o">+</span><span class="n">RHS_bc</span><span class="p">);</span>
-    <span class="n">c</span><span class="p">.</span><span class="n">Old</span> <span class="p">=</span> <span class="n">c_new</span><span class="p">;</span>
-    <span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c_new</span><span class="p">);</span> <span class="n">title</span><span class="p">([</span><span class="s">'t= '</span> <span class="n">num2str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="s">' s'</span><span class="p">]);</span>
-        <span class="n">drawnow</span><span class="p">;</span>
-<span class="k">end</span>
-</pre>
-
-
-<p>One of the frames in your final result should look like this:
-<img alt="2d diffusion fvm" src="trans_diff.png"></p>
-</div>
-    </div>
-    </article>
-    <article class="h-entry post-text">
-    <header>
-        <h1 class="p-name entry-title"><a href="posts/2014-06-25-conduction-diffusion-explained.html" class="u-url">Conduction and diffusion: a brief tutorial</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
-            <p class="dateline"><a href="posts/2014-06-25-conduction-diffusion-explained.html" rel="bookmark"><time class="published dt-published" datetime="2014-06-25T22:35:13+01:00" itemprop="datePublished" title="Publication date">2014-06-25 22:35</time></a></p>
-                <p class="commentline">            <a href="posts/2014-06-25-conduction-diffusion-explained.html#disqus_thread" data-disqus-identifier="cache/posts/2014-06-25-conduction-diffusion-explained.html">Comments</a>
-
-
-        </p>
-</div>
-    </header>
-    <div class="e-content entry-content">
-    <div>
-<h3>Warning</h3>
-<p>This post is not edited. You may find horrible English mistakes.</p>
-<h3>Diffusion/conduction equation; mass and heat transfer</h3>
-<p>As a chemical engineer mass transfer is my favorite topic, which is sort of strange given the fact that heat transfer is way easier to feel and understand. It has to be due to the very busy schedule of my heat transfer Professor, who was involved in a project at the time and did not spend enough time on getting ready for his teaching duties, unlike my mass transfer Professor. Back to business...  </p>
-<p>Temperature gradient is the driving force behind the conductive heat transfer, and the gradient of chemical potential is the driving force behind the diffusive mass transfer. At low concentrations, the gradient of the chemical potential can be replaced by the concentration gradient. Here I'm going to show you how to solve a conservation equation when the only flux term is the diffusive heat or conductive mass (doesn't sound as funny as I expected). The equation reads</p>
-<p>$$ \nabla . (-\lambda \nabla \phi)=q, $$</p>
-<p>where for mass transfer, $\lambda$ denotes the diffusivity (m^2/s) and $\phi$ denotes the concentration (mol/m^3), and <em>q</em> is a mass source term (mol/(m^3.s)) and for heat transfer, $\lambda$ denotes the conductivity (J/(m.K.s)) and $\phi$ denotes the temperature (K), and <em>q</em> is a heat source term (J/(m^3.s)). There are other physical phenomena that can be described by the above relation, e.g., <a href="http://en.wikipedia.org/wiki/Poisson%27s_equation">Poisson equation</a> or <a href="http://en.wikipedia.org/wiki/Darcy%27s_law">flow in porous media</a>, in which $\lambda$ denotes the total mobility (permeability divided by the viscosity for single phase flow), and $\phi$ denotes pressure.</p>
-<h3>Boundary conditions</h3>
-<p>I think Dirichlet (constant value) and Neumann (constant flux) boundary conditions are quite clear in terms of their physical meaning. However, there are two important situations that lead to a Robin boundary condition. In heat transfer, when a boundary is gaining/losing heat to a medium with a constant temperature of $$ T_{\infty} $$ by convection mechanism with a heat transfer coefficient <em>h</em> (J/(m^2.K.s)), the energy balance equation at the boundary reads</p>
-<p>$$ -\lambda (\mathbf{n}.\nabla T) = h(T-T_{\infty}), $$</p>
-<p>which can be rearranged to the following form that can be formulated in the FVMtool:</p>
-<p>$$\frac{\lambda}{h} (\mathbf{n}.\nabla T) + T = T_{\infty}$$</p>
-<p>For the mass transfer, if mass is produced or consumed at a boundary by a first order reaction rate, the equation reads</p>
-<p>$$ -\lambda (\mathbf{n}.\nabla c) = k_0 c, $$</p>
-<p>where $k_0$ is the rate constant of the reaction that happens on the boundary.
-For a chapter of my thesis, I encountered this sort of boundaries and it was the main reason that I rewrote the implementation of boundary condition from scratch. I will talk about the implementation of the boundary conditions later in a separate post.</p>
-<h3>A (sort of) real problem</h3>
-<p><a href="http://en.wikipedia.org/wiki/Fin_%28extended_surface%29">Fins</a> are used to increase the heat transfer area and thus the rate of heat transfer. Here we are going to model a fin in 2D. The base of the rectangular fin is attached to a surface with a constant temperature of 100 degree Celsius. The fin is made of <a href="http://en.wikipedia.org/wiki/Aluminium">Aluminum</a>, with a <a href="http://en.wikipedia.org/wiki/List_of_thermal_conductivities">thermal conductivity</a> of 237 W/(m.K), with a thickness of 0.1 cm and a length of 10 cm. The fin is exposed to a air at a constant temperature of 25 degree Celsius, and the heat transfer coefficient is 10 W/(m^2.K). This number may be off so you can estimate it using one of <a href="http://en.wikipedia.org/wiki/Heat_transfer_coefficient">these correlations</a>.<br>
-Let us jump into our Matlab <a href="https://github.com/simulkade/FVTool">FVTool</a>, and solve this problem numerically using the finite volume method.</p>
-<h3>Solution procedure</h3>
-<p>First, we start by defining the domain and creating the mesh structure:</p>
-<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span> <span class="c">% clean the command prompt, clean the memory</span>
-<span class="n">L</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="c">% 10 cm length</span>
-<span class="n">W</span> <span class="p">=</span> <span class="mf">0.01</span><span class="p">;</span> <span class="c">% 1 cm thickness</span>
-<span class="n">Nx</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c">% number of cell in x direction</span>
-<span class="n">Ny</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c">% number of cells in the y direction</span>
-<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh2D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Ny</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">W</span><span class="p">);</span> <span class="c">% creates a 2D Cartesian grid</span>
-</pre>
-
-
-<p>Now, we define the the transfer coefficients. We assume that the thermal conductivity is constant on the whole domain. However, we need to assign this constant value to each individual cell. This is done by the function <code>createCellVariable</code>. After creating this thermal conductivity field, we have to calculate the average values on the interface between cells or the <em>faces</em>. Again, in this special case, the average values are equal to a constant. But in other cases when the conductivity varies with space, the averaging becomes more important. Three averaging techniques are available in the <code>FVTool</code>, viz. <em>arithmetic</em>, <em>geometric</em>, and <em>harmonic</em>. The output of these averaging functions is always a face variable. Let's see that in action: </p>
-<pre class="code literal-block"><span class="n">T_inf</span> <span class="p">=</span> <span class="mi">25</span><span class="o">+</span><span class="mf">273.15</span><span class="p">;</span> <span class="c">% [K] ambient temperature</span>
-<span class="n">T_base</span> <span class="p">=</span> <span class="mi">100</span><span class="o">+</span><span class="mf">273.15</span><span class="p">;</span> <span class="c">% [K] temperature at the base of the fin</span>
-<span class="n">k_val</span> <span class="p">=</span> <span class="mi">237</span><span class="p">;</span> <span class="c">% W/(m.K) thermal conductivity</span>
-<span class="n">h_val</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c">% W/(m^2.K) heat transfer coefficient</span>
-<span class="n">k</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k_val</span><span class="p">);</span> <span class="c">% assign thermal cond. value to all cells</span>
-<span class="n">k_face</span> <span class="p">=</span> <span class="n">geometricMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span> <span class="c">% geometric average of the thermal conductivity values on the cell faces</span>
-</pre>
-
-
-<p>Now, we can define the boundary conditions. Here, we have one Dirichlet (constant temperature) and three Robin boundaries. The general boundary condition is defined as </p>
-<p>$$ a (\mathbf{n}.\nabla \phi)+b\phi = c. $$</p>
-<p><em>a</em>, <em>b</em>, and <em>c</em> must be defined in the program. Here, we have $a=\lambda/h$, $b=1$, and $c=T_{\infty}$. Don't forget to include the sign of the normal vector for the bottom boundary. The normal vector is in the opposite direction of the y axis and therefore its sign must be included in the temperature gradient term. I will talk about it in more details later.</p>
-<pre class="code literal-block"><span class="n">BC</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="c">% creates a BC structure for the domain m; all Neumann boundaries</span>
-<span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="n">T_base</span><span class="p">;</span> <span class="c">% convert the left boundary to constant temperature</span>
-<span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="n">k_val</span><span class="o">/</span><span class="n">h_val</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="n">T_inf</span><span class="p">;</span> <span class="c">% right boundary to Robin</span>
-<span class="n">BC</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="n">k_val</span><span class="o">/</span><span class="n">h_val</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">top</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="n">T_inf</span><span class="p">;</span> <span class="c">% top boundary to Robin</span>
-<span class="n">BC</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">a</span><span class="p">(:)=</span><span class="o">-</span><span class="n">k_val</span><span class="o">/</span><span class="n">h_val</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">bottom</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="n">T_inf</span><span class="p">;</span> <span class="c">% bottom boundary to Robin</span>
-</pre>
-
-
-<p>Now, we have a domain with fully specified transfer coefficients and defined boundary. Next and final step is to find the matrix of coefficients for the conduction term and the boundary conditions, and solve the linear system of discretized linear equations:</p>
-<pre class="code literal-block"><span class="n">M_cond</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k_face</span><span class="p">);</span> <span class="c">% matrix of coefficients for the heat diffusion</span>
-<span class="p">[</span><span class="n">M_bc</span><span class="p">,</span> <span class="n">RHS_bc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">BC</span><span class="p">);</span> <span class="c">% matrix of coefficients and RHS vector for the boundary conditions</span>
-<span class="n">T</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">M_cond</span><span class="o">+</span><span class="n">M_bc</span><span class="p">,</span> <span class="n">RHS_bc</span><span class="p">);</span> <span class="c">% solve the linear system of discretized PDE</span>
-<span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">T</span><span class="p">);</span> <span class="c">% visualize the results</span>
-</pre>
-
-
-<h3>Little fun</h3>
-<p>Please find the source code for this tutorial <a href="https://github.com/simulkade/FVTool/blob/master/Examples/Tutorial/heatconductionfin.m">here</a>. To have some numerical fun, try to change the problem from 2D to 3D by activating the appropriate line in the Matlab source code. You can also increase the heat transfer coefficient and see its effect on the temperature profile. In the next post, I will explain how to convert this example to a unsteady-state simulation.<br>
-This is a snapshot of the 3D result:</p>
-<p><img alt="3d conduction in a fin" src="heattransfer3dfin.png"></p>
-</div>
-    </div>
-    </article>
-    <article class="h-entry post-text">
-    <header>
-        <h1 class="p-name entry-title"><a href="posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html" class="u-url">A simple finite volume toolbox for Matlab</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
-            <p class="dateline"><a href="posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html" rel="bookmark"><time class="published dt-published" datetime="2014-05-20T22:35:13+01:00" itemprop="datePublished" title="Publication date">2014-05-20 22:35</time></a></p>
-                <p class="commentline">            <a href="posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html#disqus_thread" data-disqus-identifier="cache/posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html">Comments</a>
-
-
-        </p>
-</div>
-    </header>
-    <div class="e-content entry-content">
-    <div>
-<h2>An introduction to a Matlab FVM (toy) toolbox</h2>
-<p>For some reasons, I had to solve a few PDE's including single/multi phase flow in porous media, heat transfer in saturated porous media, multi-component mass transfer, and so on. My job never included the development of numerical method. In fact, I was supposed to come up with simple and useful models for the physical system that I was/am studying. Solving those models could be done in PDE solver of my choice. At the end of the day, I chose to write my own codes in Matlab.</p>
-<h3>Why [in general]?</h3>
-<p>Let me count my reasons here. In case you don't like to listen to me bragging about it, you can skip to the middle of this post.</p>
-<h4>Black-boxes</h4>
-<p>These numerical solvers, in particular <a href="http://www.comsol.com">COMSOL</a> always was like a black-box to me. I could not understand its error messages, which was frustrating, and even when it generated nice results (which most of the times happens), I was really unable to have a physical feeling for it. I will talk about the physical feeling later, and don't expect a post about love-making.</p>
-<h4>Boundary conditions</h4>
-<p>For some reason, choosing and handling boundary conditions is not explained in books, or papers, or lectures. The same situation applies to the documentation of PDE solvers. Id it really that difficult for you guys to bring us a general Robin boundary condition?</p>
-<h4>Geometry</h4>
-<p>Honestly, one of the most attractive features of PDE solvers is the graphical pre-processor (with all sort of different mesh generation techniques) and CAD modules. For me, with the simple rectangular or cylindrical geometries of my experimental set-up, there was no need of a fancy pre-processor.</p>
-<h4>Learning/Teaching</h4>
-<p>I'll be doing a lot of teaching soon, so I needed to learn numerical methods. What's better than learning by doing? Now, I can share my experiences and my coode with my students.</p>
-<h3>Why [in particular]?</h3>
-<p>I needed a mass conservative scheme (e.g., <a href="http://en.wikipedia.org/wiki/Finite_volume_method">finite volume method</a>), which is implemented in an understandable language (yes, I know. C++ is quite beautiful and elegant and understandable even for a kid with the right genes, but I prefer Matlab), with some flexibility for specifying boundary conditions and changing the physics. I actually found a code. It's called <a href="http://www.ctcms.nist.gov/fipy/">FiPy</a>. But I was already comfortable with Matlab and, don't tell anyone, I couldn't understand <a href="https://www.python.org/">Python</a> and <a href="http://www.numpy.org/">NumPy</a>. So having FiPy's syntax in mind I decided to write my own code in Matlab. I think it is in good enough shape to be shared with other FVM/Matlab users.</p>
-<h3>Really! Why?</h3>
-<p>For most of our important PDE's in chemical and petroleum engineering (did I mention that I'm a chemical/petroleum engineer?) we have analytical solutions. Also, most of the experiments that we do in the lab can be modeled with a one dimensional PDE. However, so many curious things happen when we go to a two- or three-dimensional domain. I wanted to have something, like FiPy, to make me able to solve a 1D equation, verify it by comparing it to my analytical solution or experimental data, and switch it to 2D and 3D domains without too many modifications. I have it now.</p>
-<h3>What do we solve?</h3>
-<p>We solve this general form of transient convection-diffusion equation:</p>
-<p>$$ \alpha\frac{\partial\phi}{\partial t}+\nabla.\left(\mathbf{u}\phi\right)+\nabla.\left(-D\nabla\phi\right)+\beta\phi=\gamma$$ </p>
-<p>with the following general (Robin) boundary condition:</p>
-<p>$$a\nabla\phi.\mathbf{n}+b\phi=c.$$</p>
-<p>All of the coefficients can be defined explicitly for each control volume or on the surface of a control volume.</p>
-<h3>Where to find/How to use 'the code'?</h3>
-<p>You can download the code from this github repository (click on the <code>download zip</code> button): <a href="https://github.com/simulkade/FVTool">FVTool</a>
-Or alternatively, if you are on linux (and hopefully you are), use the command</p>
-<pre class="code literal-block">git clone https://github.com/simulkade/FVTool
-</pre>
-
-
-<h4>How to start</h4>
-<p>Start <a href="http://www.matlab.com">Matlab</a> (or <a href="http://www.gnu.org/software/octave/">Octave</a>), go to the <code>FVTool</code> folder, and type </p>
-<pre class="code literal-block"><span class="n">FVToolStartUp</span> 
-</pre>
-
-
-<p>You must see a few messages and finally you should see <code>FiniteVolumeToolbox has started successfully.</code> in Matlab command prompt.
-With the following command, you can see a short document that introduces you to the code:</p>
-<pre class="code literal-block"><span class="n">showdemo</span> <span class="n">FVTdemo</span>
-</pre>
-
-
-<p>If you want to jump into it, you can run the following script to solve a diffusion equation with Dirichlet boundary conditions:</p>
-<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span>
-<span class="n">L</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>  <span class="c">% domain length</span>
-<span class="n">Nx</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c">% number of cells</span>
-<span class="n">m</span> <span class="p">=</span> <span class="n">createMesh3D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
-<span class="n">BC</span> <span class="p">=</span> <span class="n">createBC</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="c">% all Neumann boundary condition structure</span>
-<span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">a</span><span class="p">(:)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="c">% Dirichlet for the left boundary</span>
-<span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">a</span><span class="p">(:)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">b</span><span class="p">(:)=</span><span class="mi">1</span><span class="p">;</span> <span class="n">BC</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">c</span><span class="p">(:)=</span><span class="mi">0</span><span class="p">;</span> <span class="c">% right boundary</span>
-<span class="n">D_val</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c">% value of the diffusion coefficient</span>
-<span class="n">D</span> <span class="p">=</span> <span class="n">createCellVariable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_val</span><span class="p">);</span> <span class="c">% assign the diffusion coefficient to the cells</span>
-<span class="n">D_face</span> <span class="p">=</span> <span class="n">harmonicMean</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span> <span class="c">% calculate harmonic average of the diffusion coef on the cell faces</span>
-<span class="n">Mdiff</span> <span class="p">=</span> <span class="n">diffusionTerm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">D_face</span><span class="p">);</span> <span class="c">% matrix of coefficients for the diffusion term</span>
-<span class="p">[</span><span class="n">Mbc</span><span class="p">,</span> <span class="n">RHSbc</span><span class="p">]</span> <span class="p">=</span> <span class="n">boundaryCondition</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">BC</span><span class="p">);</span> <span class="c">% matix of coefficients and RHS vector for the BC</span>
-<span class="n">M</span> <span class="p">=</span> <span class="n">Mdiff</span> <span class="o">+</span> <span class="n">Mbc</span><span class="p">;</span> <span class="c">% matrix of cefficients for the PDE</span>
-<span class="n">c</span> <span class="p">=</span> <span class="n">solvePDE</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">M</span><span class="p">,</span> <span class="n">RHSbc</span><span class="p">);</span> <span class="c">% send M and RHS to the solver</span>
-<span class="n">visualizeCells</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span> <span class="c">% visualize the results</span>
-</pre>
-
-
-<p>You can find more examples <a href="https://github.com/simulkade/FVTool/tree/master/Examples/Tutorial">here</a>.</p>
-</div>
-    </div>
-    </article>
-</div>
-
+        </section>
+</article>
                <script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 
 
@@ -846,7 +610,7 @@ With the following command, you can see a short document that introduces you to 
     </div>
 </div>
 
-            <script src="assets/js/all-nocdn.js"></script>
+            <script src="../assets/js/all-nocdn.js"></script>
     
 <!-- Social buttons -->
 <div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">

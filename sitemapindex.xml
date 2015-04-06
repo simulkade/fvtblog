@@ -6,34 +6,46 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://fvt.simulkade.com/categories/cat_diffusion-transient-fvm.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/categories/cat_fvm-heat-conduction-diffusion-robin.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/categories/cat_fvm-matlab.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/categories/diffusion.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://fvt.simulkade.com/categories/direct-substitution.xml</loc>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/categories/heat-conduction.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://fvt.simulkade.com/categories/newton.xml</loc>
+  <lastmod>2015-04-06</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://fvt.simulkade.com/categories/nonlinear-pde.xml</loc>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/galleries/rss.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/rss.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://fvt.simulkade.com/sitemap.xml</loc>
-  <lastmod>2015-03-29</lastmod>
+  <lastmod>2015-04-06</lastmod>
  </sitemap>
 </sitemapindex>
