@@ -83,6 +83,7 @@ div.output_prompt {
 div.output_area pre {
   /*background-color: #f7f7f9;*/
   font-size: 14px;
+  max-width: 600px;
 }
 
 div.text_cell_render {
