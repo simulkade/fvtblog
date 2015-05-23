@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>FVTool (diffusion)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link href="http://fvt.simulkade.com/categories/diffusion.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Thu, 21 May 2015 07:34:57 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Convection-diffusion in single-phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html</link><dc:creator>AAE</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>FVTool (diffusion)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link href="http://fvt.simulkade.com/categories/diffusion.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Sat, 23 May 2015 22:59:49 GMT</lastBuildDate><generator>http://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Convection-diffusion in single-phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html</link><dc:creator>AAE</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -202,6 +202,16 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Conclusion"&gt;Conclusion&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Conclusion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;By changing the Dykstra-Parsons coefficient to a higher value, we can observe channeling phenomenon in porous media by looking at the concentration profile. A small value of Dykstra-Parsons, around 0.01, which makes a +/- 3% perturbation in the permeability field does not lead to a channeling phenomenon, and is enough to initialize the fingers. Beautiful figures can be made by assigning a value of 0.7 or 0.8 to the Dyktra-Parsons coefficient (see below)!&lt;br&gt;
 &lt;img src="http://fvt.simulkade.com/tracer-profile.png" alt="tracer profile"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Update-(May-24,-2015)"&gt;Update (May 24, 2015)&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Update-(May-24,-2015)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Find the matlab code for the above problem &lt;a href="https://github.com/simulkade/FVTool/blob/master/Examples/Tutorial/tracer_hetrogeneous.m"&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
