@@ -68,6 +68,8 @@ showdemo FVTdemo
 
 If you want to jump into it, you can run the following script to solve a diffusion equation with Dirichlet boundary conditions:
 
+**Important Update**: this code does not work with the new version of FVTool. Download the old version [here](https://github.com/simulkade/FVTool/archive/v0.11.zip).
+
 ```matlab
 clc; clear;
 L = 50;  % domain length

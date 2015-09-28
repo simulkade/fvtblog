@@ -9,6 +9,8 @@
 .. type: text
 -->
 
+**Important Update**: the codes in this post will not work with the new version of FVTool. Download the old version of FVTool [here](https://github.com/simulkade/FVTool/archive/v0.11.zip).
+
 ## A time dependent diffusion problem
 In my last post, I promised to solve a time dependent conduction problem. Indeed I tried to keep my promise by writing a full post about single phase compressible flow in porous media. But in the middle of writing, I noticed that there are too many things that need to be clarified before we can jump into that problem. Therefore, I decided to hold my horses and only solve a simple time-dependent diffusion problem. I this post, you are going to learn how to define the initial conditions and use a `for` loop for time steps.
 
