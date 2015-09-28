@@ -3,21 +3,13 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Convection-diffusion in single-phase flow in porous media | FVTool</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html">
-
-
-
-
-    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convection-diffusion in single-phase flow in porous media | FVTool</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -30,40 +22,28 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script>
-
-        <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="AAE">
-        <meta property="og:site_name" content="FVTool">
-    <meta property="og:title" content="Convection-diffusion in single-phase flow in porous media">
-    <meta property="og:url" content="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html">
-    <meta property="og:description" content="Fingering and channeling¶For single-phase flow in porous media, the mobility of a the fluid is defined by $k/\mu$, i.e., permeability (which is a property of the porous medium) over viscosity (a prope">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-05-11T23:39:01+02:00">
-           <meta property="article:tag" content="channeling">
-           <meta property="article:tag" content="convection">
-           <meta property="article:tag" content="diffusion">
-           <meta property="article:tag" content="fingering">
-           <meta property="article:tag" content="tracer">
-
-    
-    
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="AAE">
+<meta property="og:site_name" content="FVTool">
+<meta property="og:title" content="Convection-diffusion in single-phase flow in porous media">
+<meta property="og:url" content="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html">
+<meta property="og:description" content="Fingering and channeling¶For single-phase flow in porous media, the mobility of a the fluid is defined by $k/\mu$, i.e., permeability (which is a property of the porous medium) over viscosity (a prope">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-05-11T23:39:01+02:00">
+<meta property="article:tag" content="channeling">
+<meta property="article:tag" content="convection">
+<meta property="article:tag" content="diffusion">
+<meta property="article:tag" content="fingering">
+<meta property="article:tag" content="tracer">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
 <!-- This keeps the margins nice -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -75,9 +55,9 @@ MathJax.Hub.Config({
             </a>
         </div>
 <!-- /.navbar-header -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
-                                <li>
+<li>
 <a href="http://www.simulkade.com">Simulkade</a>
                 </li>
 <li>
@@ -92,44 +72,33 @@ MathJax.Hub.Config({
                 
             </li>
 </ul>
-                
-<!-- Custom search -->
-<form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
-<input type="hidden" name="sites" value="http://fvt.simulkade.com/">
-<input type="hidden" name="k8" value="#444444">
-<input type="hidden" name="k9" value="#D51920">
-<input type="hidden" name="kt" value="h">
-<input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;">
-<input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+<!-- Custom search --><form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="http://fvt.simulkade.com/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
 </form>
 <!-- End of custom search -->
 
 
             <ul class="nav navbar-nav navbar-right">
-    <li>
+<li>
     <a href="2015-05-11-tracer-flow-porous-media.ipynb" id="sourcelink">Source</a>
     </li>
                 
             </ul>
-        </div>
+</div>
 <!-- /.navbar-collapse -->
     </div>
 <!-- /.container -->
-</nav>
-
-<!-- End of Menubar -->
-
-<div class="container" id="content" role="main">
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
         <div class="row">
             
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
-        <header>
-            <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Convection-diffusion in single-phase flow in porous media</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Convection-diffusion in single-phase flow in porous media</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
+            <p class="byline author vcard"><span class="byline-name fn">
+                    AAE
+            </span></p>
             <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-05-11T23:39:01+02:00" itemprop="datePublished" title="2015-05-11 23:39">2015-05-11 23:39</time></a></p>
                 <p class="commentline">            <a href="2015-05-11-tracer-flow-porous-media.html#disqus_thread" data-disqus-identifier="cache/posts/2015-05-11-tracer-flow-porous-media.html">Comments</a>
 
@@ -139,9 +108,7 @@ MathJax.Hub.Config({
 
         </div>
         
-    </header>
-
-    <div class="e-content entry-content" itemprop="articleBody text">
+    </header><div class="e-content entry-content" itemprop="articleBody text">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -158,8 +125,7 @@ MathJax.Hub.Config({
 <p>Flow of a Newtonian fluid in porous media is governed by the Darcy's law, which is basically an empirical relation between the permeability of the porous medium ($k$), the viscosity of the fluid ($\mu$), the superficial velocity of the fluid ($u$), and the pressure gradient ($\nabla p$): $$\mathbf{u}=-\frac{k}{\mu}\nabla p$$
 For the flow of an incompressible single-phase fluid, the continuity equation reads $$\nabla.\mathbf{u}=\nabla.(-\frac{k}{\mu}\nabla p)=0$$
 Finally, the convection-diffusion equation in porous media is defined by $$\varphi \frac{\partial c}{\partial t}+\nabla.(\mathbf{u}c-\varphi D \nabla c) =0,$$ where $\varphi$ is the porosity, $c$ is the concentration of the tracer or solute in mole per unit volume of the fluid, and $D$ is the diffusion coefficient.
-The initial condition is zero concentration, and the boundaries are Dirichlet on the left border, and Neumann on the right border.<br>
-<img src="../single-phase-tracer.png" alt="single phase domain"></p>
+The initial condition is zero concentration, and the boundaries are Dirichlet on the left border, and Neumann on the right border.<br><img src="../single-phase-tracer.png" alt="single phase domain"></p>
 <p>Let me implement it here.</p>
 
 </div>
@@ -355,8 +321,7 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Conclusion">Conclusion<a class="anchor-link" href="2015-05-11-tracer-flow-porous-media.html#Conclusion">¶</a>
 </h3>
-<p>By changing the Dykstra-Parsons coefficient to a higher value, we can observe channeling phenomenon in porous media by looking at the concentration profile. A small value of Dykstra-Parsons, around 0.01, which makes a +/- 3% perturbation in the permeability field does not lead to a channeling phenomenon, and is enough to initialize the fingers. Beautiful figures can be made by assigning a value of 0.7 or 0.8 to the Dyktra-Parsons coefficient (see below)!<br>
-<img src="../tracer-profile.png" alt="tracer profile"></p>
+<p>By changing the Dykstra-Parsons coefficient to a higher value, we can observe channeling phenomenon in porous media by looking at the concentration profile. A small value of Dykstra-Parsons, around 0.01, which makes a +/- 3% perturbation in the permeability field does not lead to a channeling phenomenon, and is enough to initialize the fingers. Beautiful figures can be made by assigning a value of 0.7 or 0.8 to the Dyktra-Parsons coefficient (see below)!<br><img src="../tracer-profile.png" alt="tracer profile"></p>
 
 </div>
 </div>
@@ -377,26 +342,21 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
   </div>
 
     </div>
-    <aside class="postpromonav">
-    <nav>
-            <ul itemprop="keywords" class="tags">
-           <li><a class="tag p-category" href="../categories/channeling.html" rel="tag">channeling</a></li>
-           <li><a class="tag p-category" href="../categories/convection.html" rel="tag">convection</a></li>
-           <li><a class="tag p-category" href="../categories/diffusion.html" rel="tag">diffusion</a></li>
-           <li><a class="tag p-category" href="../categories/fingering.html" rel="tag">fingering</a></li>
-           <li><a class="tag p-category" href="../categories/tracer.html" rel="tag">tracer</a></li>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/channeling.html" rel="tag">channeling</a></li>
+            <li><a class="tag p-category" href="../categories/convection.html" rel="tag">convection</a></li>
+            <li><a class="tag p-category" href="../categories/diffusion.html" rel="tag">diffusion</a></li>
+            <li><a class="tag p-category" href="../categories/fingering.html" rel="tag">fingering</a></li>
+            <li><a class="tag p-category" href="../categories/tracer.html" rel="tag">tracer</a></li>
         </ul>
-
-            <ul class="pager">
-            <li class="previous">
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="2015-04-20-choosing-the-right-averaging-method-for-fvm.html" rel="prev" title="Choosing the right cell averaging method for linearized PDEs">Previous post</a>
             </li>
-        </ul>
-
-    </nav>
-    </aside>
-        <section class="comments">
-        <h2>Comments</h2>
+            <li class="next">
+                <a href="2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html" rel="next" title="Coupled nonlinear PDEs: two phase flow in porous media">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
                         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="fvtool",
@@ -411,39 +371,26 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section>
-</article>
-               <script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
-
-
-        </div>
+        </section></article><script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
         <!--End of body content-->
 
-        <footer>
+        <footer id="footer">
             Contents © 2015         <a href="mailto:a.a.eftekhari@outlook.com">AAE</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
             
         </footer>
-    </div>
+</div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script>
-    
-
-    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
-    <!-- fancy dates -->
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script>
-    <!-- end fancy dates -->
-
-<script>
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -453,7 +400,5 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
   ga('send', 'pageview');
 
 </script>
-
-
 </body>
 </html>
