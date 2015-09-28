@@ -3,21 +3,13 @@
 og: http://ogp.me/ns#
 article: http://ogp.me/ns/article#
 " lang="en">
-    <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Solving nonlinear PDEs with FVM | FVTool</title>
-
-                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-
-                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-
-      <link rel="canonical" href="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html">
-
-
-
-
-    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solving nonlinear PDEs with FVM | FVTool</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -30,39 +22,27 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script>
-
-        <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
-
-    
-
-    
-    <meta name="author" content="AAE">
-        <meta property="og:site_name" content="FVTool">
-    <meta property="og:title" content="Solving nonlinear PDEs with FVM">
-    <meta property="og:url" content="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html">
-    <meta property="og:description" content="There are many cases where the transfer coefficient in the convection-diffusion equations is a function of the independent variable. This makes the PDE nonlinear. While working on my thesis, I realize">
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2015-04-06T15:51:37+01:00">
-           <meta property="article:tag" content="diffusion">
-           <meta property="article:tag" content="direct substitution">
-           <meta property="article:tag" content="Newton">
-           <meta property="article:tag" content="nonlinear PDE">
-
-    
-    
-
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="AAE">
+<meta property="og:site_name" content="FVTool">
+<meta property="og:title" content="Solving nonlinear PDEs with FVM">
+<meta property="og:url" content="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html">
+<meta property="og:description" content="There are many cases where the transfer coefficient in the convection-diffusion equations is a function of the independent variable. This makes the PDE nonlinear. While working on my thesis, I realize">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-04-06T15:51:37+01:00">
+<meta property="article:tag" content="diffusion">
+<meta property="article:tag" content="direct substitution">
+<meta property="article:tag" content="Newton">
+<meta property="article:tag" content="nonlinear PDE">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
 <!-- This keeps the margins nice -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -74,9 +54,9 @@ MathJax.Hub.Config({
             </a>
         </div>
 <!-- /.navbar-header -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
-                                <li>
+<li>
 <a href="http://www.simulkade.com">Simulkade</a>
                 </li>
 <li>
@@ -91,44 +71,33 @@ MathJax.Hub.Config({
                 
             </li>
 </ul>
-                
-<!-- Custom search -->
-<form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
-<input type="hidden" name="sites" value="http://fvt.simulkade.com/">
-<input type="hidden" name="k8" value="#444444">
-<input type="hidden" name="k9" value="#D51920">
-<input type="hidden" name="kt" value="h">
-<input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;">
-<input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+<!-- Custom search --><form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="http://fvt.simulkade.com/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
 </form>
 <!-- End of custom search -->
 
 
             <ul class="nav navbar-nav navbar-right">
-    <li>
+<li>
     <a href="2015-04-06-solving-nonlinear-pdes-with-fvm.ipynb" id="sourcelink">Source</a>
     </li>
                 
             </ul>
-        </div>
+</div>
 <!-- /.navbar-collapse -->
     </div>
 <!-- /.container -->
-</nav>
-
-<!-- End of Menubar -->
-
-<div class="container" id="content" role="main">
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
     <div class="body-content">
         <!--Body content-->
         <div class="row">
             
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
-        <header>
-            <h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Solving nonlinear PDEs with FVM</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Solving nonlinear PDEs with FVM</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
+            <p class="byline author vcard"><span class="byline-name fn">
+                    AAE
+            </span></p>
             <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2015-04-06T15:51:37+01:00" itemprop="datePublished" title="2015-04-06 15:51">2015-04-06 15:51</time></a></p>
                 <p class="commentline">            <a href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#disqus_thread" data-disqus-identifier="cache/posts/2015-03-23-solving-nonlinear-pdes-with-fvm.html">Comments</a>
 
@@ -138,9 +107,7 @@ MathJax.Hub.Config({
 
         </div>
         
-    </header>
-
-    <div class="e-content entry-content" itemprop="articleBody text">
+    </header><div class="e-content entry-content" itemprop="articleBody text">
     <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
@@ -338,8 +305,7 @@ To linearize this equation, I assume that $\phi$ and $\nabla \phi$ are independe
 <p>The convection term that appears after linearization of the problem has a velocity term, which reads $$\mathbf{u}(\phi_0)=−2.0D_0\phi_0\nabla\phi_0$$ I have written a function, called `gradientTerm` which gives you the value of the gradient on the cell faces. This gradient is multiplied by a term that needs to be averaged on each cell face. Here, I have calculated the arithmetic average of $\phi_0$ using a function called suprise suprise <code>linearMean</code>. This is of course one way of doing it. The other ways are <code>geometricMean</code>, <code>harmonicMean</code>, <code>upwindMean</code>, <code>tvdMean</code>, and <code>aritheticMean</code>. Here, we will discuss them.</p>
 <h3 id="Averaging-techniques-for-the-face-values-in-FVM">Averaging techniques for the face values in FVM<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Averaging-techniques-for-the-face-values-in-FVM">¶</a>
 </h3>
-<p>The following figure shows two neigbor cells with different length and values.<br>
-<img src="../averaging_pic.png" alt="neighbor cells FVM">
+<p>The following figure shows two neigbor cells with different length and values.<br><img src="../averaging_pic.png" alt="neighbor cells FVM">
 The averaging terms that are used in JFVM are as follows:</p>
 <h4 id="Linear-mean">Linear mean<a class="anchor-link" href="2015-04-06-solving-nonlinear-pdes-with-fvm.html#Linear-mean">¶</a>
 </h4>
@@ -568,28 +534,20 @@ These methods have different applications for different ptoblems. We will discus
   </div>
 
     </div>
-    <aside class="postpromonav">
-    <nav>
-            <ul itemprop="keywords" class="tags">
-           <li><a class="tag p-category" href="../categories/diffusion.html" rel="tag">diffusion</a></li>
-           <li><a class="tag p-category" href="../categories/direct-substitution.html" rel="tag">direct substitution</a></li>
-           <li><a class="tag p-category" href="../categories/newton.html" rel="tag">Newton</a></li>
-           <li><a class="tag p-category" href="../categories/nonlinear-pde.html" rel="tag">nonlinear PDE</a></li>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../categories/diffusion.html" rel="tag">diffusion</a></li>
+            <li><a class="tag p-category" href="../categories/direct-substitution.html" rel="tag">direct substitution</a></li>
+            <li><a class="tag p-category" href="../categories/newton.html" rel="tag">Newton</a></li>
+            <li><a class="tag p-category" href="../categories/nonlinear-pde.html" rel="tag">nonlinear PDE</a></li>
         </ul>
-
-            <ul class="pager">
-            <li class="previous">
+<ul class="pager hidden-print">
+<li class="previous">
                 <a href="2015-03-29-switched-to-nikola.html" rel="prev" title="Switched to Nikola">Previous post</a>
             </li>
             <li class="next">
                 <a href="2015-04-20-choosing-the-right-averaging-method-for-fvm.html" rel="next" title="Choosing the right cell averaging method for linearized PDEs">Next post</a>
             </li>
-        </ul>
-
-    </nav>
-    </aside>
-        <section class="comments">
-        <h2>Comments</h2>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
                         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="fvtool",
@@ -604,39 +562,26 @@ These methods have different applications for different ptoblems. We will discus
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section>
-</article>
-               <script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
-
-
-        </div>
+        </section></article><script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
         <!--End of body content-->
 
-        <footer>
+        <footer id="footer">
             Contents © 2015         <a href="mailto:a.a.eftekhari@outlook.com">AAE</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
             
         </footer>
-    </div>
+</div>
 </div>
 
-            <script src="../assets/js/all-nocdn.js"></script>
-    
-
-    <script>$('a.image-reference:not(.islink)').colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
-    <!-- fancy dates -->
-    <script>
+            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script>
-    <!-- end fancy dates -->
-
-<script>
+    </script><!-- end fancy dates --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -646,7 +591,5 @@ These methods have different applications for different ptoblems. We will discus
   ga('send', 'pageview');
 
 </script>
-
-
 </body>
 </html>
