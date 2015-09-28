@@ -121,6 +121,7 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
+        ("http://www.simulkade.com/stories/about.html", "About"),
         ("http://www.simulkade.com", "Simulkade"),
         ("/archive.html", "Archive"),
         ("/categories/index.html", "Tags"),
