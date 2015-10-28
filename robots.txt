@@ -1,0 +1,4 @@
+Sitemap: http://fvt.simulkade.com/sitemapindex.xml
+
+User-Agent: *
+Host: fvt.simulkade.com

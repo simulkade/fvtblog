@@ -6,10 +6,10 @@ article: http://ogp.me/ns/article#
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Posts about [Diffusion, Transient, FVM] | FVTool</title>
+<title>galleries | FVTool</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-<link rel="canonical" href="http://fvt.simulkade.com/categories/cat_diffusion-transient-fvm.html">
+<link rel="canonical" href="http://fvt.simulkade.com/galleries/index.html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -22,7 +22,15 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="alternate" type="application/rss+xml" title="RSS for category [Diffusion, Transient, FVM]" href="cat_diffusion-transient-fvm.xml">
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<style type="text/css">
+    .image-block {
+        display: inline-block;
+    }
+    .flowr_row {
+        width: 100%;
+    }
+    </style>
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -56,7 +64,7 @@ MathJax.Hub.Config({
 <a href="../archive.html">Archive</a>
                 </li>
 <li>
-<a href="index.html">Tags</a>
+<a href="../categories/index.html">Tags</a>
                 </li>
 <li>
 <a href="../rss.xml">RSS feed</a>
@@ -80,16 +88,12 @@ MathJax.Hub.Config({
         <!--Body content-->
         <div class="row">
             
-<article class="tagpage"><header><h1>Posts about [Diffusion, Transient, FVM]</h1>
-        <div class="metadata">
-                <p class="feedlink"><a href="cat_diffusion-transient-fvm.xml" type="application/rss+xml">RSS feed</a></p>
+    <nav class="breadcrumbs"><ul class="breadcrumb">
+<li>galleries</li>
+</ul></nav><h1>galleries</h1>
+
+<div id="gallery_container"></div>
         </div>
-    </header><ul class="postlist">
-<li>
-<time class="listdate" datetime="2014-10-26T22:35:13+01:00" title="2014-10-26 22:35">2014-10-26 22:35</time><a href="../posts/2014-10-26-transient-diffusion-fvm.html" class="listtitle">2D transient diffusion equation; numerical FVM solution</a><a></a>
-</li>
-    </ul></article>
-</div>
         <!--End of body content-->
 
         <footer id="footer">
@@ -102,7 +106,43 @@ MathJax.Hub.Config({
             <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><script>
+    </script><!-- end fancy dates --><script src="../assets/js/flowr.plugin.js"></script><script>
+jsonContent = [];
+$("#gallery_container").flowr({
+        data : jsonContent,
+        height : 180*.6,
+        padding: 5,
+        rows: -1,
+        render : function(params) {
+            // Just return a div, string or a dom object, anything works fine
+            img = $("<img />").attr({
+                'src': params.itemData.url_thumb,
+                'width' : params.width,
+                'height' : params.height
+            }).css('max-width', '100%');
+            link = $( "<a></a>").attr({
+                'href': params.itemData.url,
+                'class': 'image-reference'
+            });
+            div = $("<div />").addClass('image-block').attr({
+                'title': params.itemData.title,
+                'data-toggle': "tooltip",
+            });
+            link.append(img);
+            div.append(link);
+            div.hover(div.tooltip());
+            return div;
+        },
+        itemWidth : function(data) { return data.size.w; },
+        itemHeight : function(data) { return data.size.h; },
+        complete : function(params) {
+            if( jsonContent.length > params.renderedItems ) {
+                nextRenderList = jsonContent.slice( params.renderedItems );
+            }
+        }
+    });
+$("a.image-reference").colorbox({rel:"gal", maxWidth:"100%",maxHeight:"100%",scalePhotos:true});
+</script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
