@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width">
 <title>A simple finite volume toolbox for Matlab | FVTool</title>
-<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://fvt.simulkade.com/posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html">
 <script type="text/x-mathjax-config">
@@ -23,6 +21,7 @@ MathJax.Hub.Config({
     }
 });
 </script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="AAE">
+<link rel="next" href="2014-06-25-conduction-diffusion-explained.html" title="Conduction and diffusion: a brief tutorial" type="text/html">
 <meta property="og:site_name" content="FVTool">
 <meta property="og:title" content="A simple finite volume toolbox for Matlab">
 <meta property="og:url" content="http://fvt.simulkade.com/posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html">
@@ -32,81 +31,53 @@ For some reasons, I had to solve a few PDE's including single/multi phase flow i
 <meta property="article:published_time" content="2014-05-20T22:35:13+01:00">
 </head>
 <body>
-<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
-
-<!-- Menubar -->
-
-<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
-<!-- This keeps the margins nice -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://fvt.simulkade.com/">
-
-                <span id="blog-title">FVTool</span>
-            </a>
-        </div>
-<!-- /.navbar-header -->
-        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
-            <ul class="nav navbar-nav">
-<li>
-<a href="http://www.simulkade.com/stories/about.html">About</a>
-                </li>
-<li>
-<a href="http://www.simulkade.com">Simulkade</a>
-                </li>
-<li>
-<a href="../archive.html">Archive</a>
-                </li>
-<li>
-<a href="../categories/index.html">Tags</a>
-                </li>
-<li>
-<a href="../rss.xml">RSS feed</a>
-
-                
-            </li>
-</ul>
-<!-- Custom search --><form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
-<input type="hidden" name="sites" value="http://fvt.simulkade.com/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
-</form>
-<!-- End of custom search -->
-
-
-            <ul class="nav navbar-nav navbar-right">
-<li>
-    <a href="2014-05-20-a-simple-finite-volume-toolbox-for-matlab.md" id="sourcelink">Source</a>
-    </li>
-                
-            </ul>
-</div>
-<!-- /.navbar-collapse -->
-    </div>
-<!-- /.container -->
-</nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
-        <!--Body content-->
-        <div class="row">
-            
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">A simple finite volume toolbox for Matlab</a></h1>
-
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                    AAE
-            </span></p>
-            <p class="dateline"><a href="#" rel="bookmark"><time class="published dt-published" datetime="2014-05-20T22:35:13+01:00" itemprop="datePublished" title="2014-05-20 22:35">2014-05-20 22:35</time></a></p>
-                <p class="commentline">            <a href="2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html#disqus_thread" data-disqus-identifier="cache/posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html">Comments</a>
-
-
-                    </p>
-<p class="sourceline"><a href="2014-05-20-a-simple-finite-volume-toolbox-for-matlab.md" id="sourcelink">Source</a></p>
-
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+            styles, `#sidebar-checkbox` for behavior. -->
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"><!-- Toggleable sidebar --><div class="sidebar" id="sidebar">
+        <div class="sidebar-item">
+            <p>Theme by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/ralsina" target="_blank">@ralsina</a></p>
         </div>
         
+    <nav id="menu" role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="http://www.simulkade.com/stories/about.html">About</a>
+        <a class="sidebar-nav-item" href="http://www.simulkade.com">Simulkade</a>
+        <a class="sidebar-nav-item" href="../archive.html">Archive</a>
+        <a class="sidebar-nav-item" href="../categories/index.html">Tags</a>
+        <a class="sidebar-nav-item" href="../rss.xml">RSS feed</a>
+    
+    
+    </nav>
+</div>
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          
+    <h3 id="brand" class="masthead-title">
+      <a href="http://fvt.simulkade.com/" title="FVTool" rel="home">FVTool</a>
+    </h3>
+
+        </div>
+      </div>
+
+      <div class="container content" id="content">
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="post-title p-name entry-title" itemprop="headline name"><a href="#" class="u-url">A simple finite volume toolbox for Matlab</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">AAE</span></p>
+            <p class="dateline"><a href="#" rel="bookmark"><time class="post-date published dt-published" datetime="2014-05-20T22:35:13+01:00" itemprop="datePublished" title="2014-05-20 22:35">2014-05-20 22:35</time></a></p>
+                <p class="commentline">
+        
+    <a href="2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html#disqus_thread" data-disqus-identifier="cache/posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html">Comments</a>
+
+
+        </p>
+</div>
+        
+
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <h2>An introduction to a Matlab FVM (toy) toolbox</h2>
@@ -134,25 +105,25 @@ For some reasons, I had to solve a few PDE's including single/multi phase flow i
 <h3>Where to find/How to use 'the code'?</h3>
 <p>You can download the code from this github repository (click on the <code>download zip</code> button): <a href="https://github.com/simulkade/FVTool">FVTool</a>
 Or alternatively, if you are on linux (and hopefully you are), use the command</p>
-<pre class="code literal-block">git clone https://github.com/simulkade/FVTool
+<pre class="code literal-block"><span></span>git clone https://github.com/simulkade/FVTool
 </pre>
 
 
 <h4>How to start</h4>
 <p>Start <a href="http://www.matlab.com">Matlab</a> (or <a href="http://www.gnu.org/software/octave/">Octave</a>), go to the <code>FVTool</code> folder, and type </p>
-<pre class="code literal-block"><span class="n">FVToolStartUp</span> 
+<pre class="code literal-block"><span></span><span class="n">FVToolStartUp</span> 
 </pre>
 
 
 <p>You must see a few messages and finally you should see <code>FiniteVolumeToolbox has started successfully.</code> in Matlab command prompt.
 With the following command, you can see a short document that introduces you to the code:</p>
-<pre class="code literal-block"><span class="n">showdemo</span> <span class="n">FVTdemo</span>
+<pre class="code literal-block"><span></span><span class="n">showdemo</span> <span class="n">FVTdemo</span>
 </pre>
 
 
 <p>If you want to jump into it, you can run the following script to solve a diffusion equation with Dirichlet boundary conditions:</p>
 <p><strong>Important Update</strong>: this code does not work with the new version of FVTool. Download the old version <a href="https://github.com/simulkade/FVTool/archive/v0.11.zip">here</a>.</p>
-<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span>
+<pre class="code literal-block"><span></span><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span>
 <span class="n">L</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>  <span class="c">% domain length</span>
 <span class="n">Nx</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c">% number of cells</span>
 <span class="n">m</span> <span class="p">=</span> <span class="n">createMesh3D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>
@@ -177,8 +148,10 @@ With the following command, you can see a short document that introduces you to 
 <li class="next">
                 <a href="2014-06-25-conduction-diffusion-explained.html" rel="next" title="Conduction and diffusion: a brief tutorial">Next post</a>
             </li>
-        </ul></nav></aside><section class="comments"><h2>Comments</h2>
-                        <div id="disqus_thread"></div>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+        <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="fvtool",
             disqus_url="http://fvt.simulkade.com/posts/2014-05-20-a-simple-finite-volume-toolbox-for-matlab.html",
@@ -189,29 +162,22 @@ With the following command, you can see a short document that introduces you to 
         };
         (function() {
             var dsq = document.createElement('script'); dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
-    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section></article><script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
-</div>
-        <!--End of body content-->
-
-        <footer id="footer">
-            Contents © 2015         <a href="mailto:a.a.eftekhari@outlook.com">AAE</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2017         <a href="mailto:a.a.eftekhari@outlook.com">AAE</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
-</div>
-
-            <script src="../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><script>
+    </div>
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -220,6 +186,9 @@ With the following command, you can see a short document that introduces you to 
   ga('create', 'UA-51207335-2', 'auto');
   ga('send', 'pageview');
 
-</script>
+</script><script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
 </body>
 </html>
