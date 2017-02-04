@@ -130,7 +130,7 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "ipython"
+THEME = "lanyon"
 
 # Below this point, everything is optional
 

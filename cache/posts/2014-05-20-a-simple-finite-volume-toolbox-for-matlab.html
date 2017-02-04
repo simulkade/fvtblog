@@ -23,25 +23,25 @@
 <h2>Where to find/How to use 'the code'?</h2>
 <p>You can download the code from this github repository (click on the <code>download zip</code> button): <a href="https://github.com/simulkade/FVTool">FVTool</a>
 Or alternatively, if you are on linux (and hopefully you are), use the command</p>
-<pre class="code literal-block">git clone https://github.com/simulkade/FVTool
+<pre class="code literal-block"><span></span>git clone https://github.com/simulkade/FVTool
 </pre>
 
 
 <h3>How to start</h3>
 <p>Start <a href="http://www.matlab.com">Matlab</a> (or <a href="http://www.gnu.org/software/octave/">Octave</a>), go to the <code>FVTool</code> folder, and type </p>
-<pre class="code literal-block"><span class="n">FVToolStartUp</span> 
+<pre class="code literal-block"><span></span><span class="n">FVToolStartUp</span> 
 </pre>
 
 
 <p>You must see a few messages and finally you should see <code>FiniteVolumeToolbox has started successfully.</code> in Matlab command prompt.
 With the following command, you can see a short document that introduces you to the code:</p>
-<pre class="code literal-block"><span class="n">showdemo</span> <span class="n">FVTdemo</span>
+<pre class="code literal-block"><span></span><span class="n">showdemo</span> <span class="n">FVTdemo</span>
 </pre>
 
 
 <p>If you want to jump into it, you can run the following script to solve a diffusion equation with Dirichlet boundary conditions:</p>
 <p><strong>Important Update</strong>: this code does not work with the new version of FVTool. Download the old version <a href="https://github.com/simulkade/FVTool/archive/v0.11.zip">here</a>.</p>
-<pre class="code literal-block"><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span>
+<pre class="code literal-block"><span></span><span class="n">clc</span><span class="p">;</span> <span class="n">clear</span><span class="p">;</span>
 <span class="n">L</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>  <span class="c">% domain length</span>
 <span class="n">Nx</span> <span class="p">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c">% number of cells</span>
 <span class="n">m</span> <span class="p">=</span> <span class="n">createMesh3D</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span><span class="n">Nx</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">);</span>

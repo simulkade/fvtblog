@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>FVTool (Buckley-Leverett)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link href="http://fvt.simulkade.com/categories/buckley-leverett.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 28 Oct 2015 19:28:39 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Coupled nonlinear PDEs: two phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html</link><dc:creator>AAE</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FVTool (Posts about Buckley-Leverett)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link rel="self" type="application/rss+xml" href="http://fvt.simulkade.com/categories/buckley-leverett.xml"></atom:link><language>en</language><lastBuildDate>Sat, 04 Feb 2017 19:27:18 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Coupled nonlinear PDEs: two phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html</link><dc:creator>AAE</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -31,7 +31,7 @@ For each time step, the above equation needs to be solved in a loop until the ne
 &lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;% Go to the FVTool folder and initialize the toolbox
+&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;% Go to the FVTool folder and initialize the toolbox
 cd('/home/ali/MyPackages/FVTool/')
 FVToolStartUp()
 &lt;/pre&gt;&lt;/div&gt;
@@ -44,7 +44,9 @@ FVToolStartUp()
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
@@ -75,7 +77,7 @@ FiniteVolumeToolbox has started successfully.
 &lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;krw0 = 1;
+&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;krw0 = 1;
 kro0 = 1;
 nw = 2;
 no = 2;
@@ -104,7 +106,9 @@ legend('water', 'oil');
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -113,7 +117,9 @@ legend('water', 'oil');
 
 &lt;/div&gt;
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+
 
 
 
@@ -138,7 +144,7 @@ legend('water', 'oil');
 &lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;Nx = 100; % number of cells in x direction
+&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Nx = 100; % number of cells in x direction
 Ny = 70; % number of cells in y direction
 W = 50; % [m] length of the domain in x direction
 H = 30; % [m] length of the domain in y direction
@@ -171,7 +177,9 @@ title('Permeability field')
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -180,7 +188,9 @@ title('Permeability field')
 
 &lt;/div&gt;
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+
 
 
 
@@ -205,7 +215,7 @@ title('Permeability field')
 &lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;BCp = createBC(m); % Neumann BC for pressure
+&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;BCp = createBC(m); % Neumann BC for pressure
 BCs = createBC(m); % Neumann BC for saturation
 % change the left and right boandary to constant pressure (Dirichlet)
 BCp.left.a(:)=0; BCp.left.b(:)=1; BCp.left.c(:)=pin;
@@ -227,7 +237,9 @@ p = p_old;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+
 
 
 
@@ -252,7 +264,7 @@ p = p_old;
 &lt;div class="prompt input_prompt"&gt;In [12]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;% define the time step and solver properties
+&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;% define the time step and solver properties
 dt = 1000; % [s] time step
 t_end = 50*dt; % [s] final time
 eps_p = 1e-5; % pressure accuracy
@@ -268,7 +280,9 @@ uw = -gradientTerm(p_old); % an estimation of the water velocity
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
+
 
 
 
@@ -293,7 +307,7 @@ uw = -gradientTerm(p_old); % an estimation of the water velocity
 &lt;div class="prompt input_prompt"&gt;In [13]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;t = 0;
+&lt;div class=" highlight hl-octave_kernel"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;t = 0;
 while (t&amp;lt;t_end)
     error_p = 1e5;
     error_sw = 1e5;
@@ -350,7 +364,9 @@ visualizeCells(sw);shading interp;
 &lt;div class="output"&gt;
 
 
-&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 &lt;div class="output_png output_subarea "&gt;
@@ -359,7 +375,9 @@ visualizeCells(sw);shading interp;
 
 &lt;/div&gt;
 
-&lt;div class="output_area"&gt;&lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
+&lt;div class="output_area"&gt;
+&lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
+
 
 
 
