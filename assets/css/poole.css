@@ -172,7 +172,8 @@ div.input_area {
   padding: 2px 4px;
   border-radius:4px;
   /*background:#f7f7f7;*/
-  margin-left: 20px;
+  margin-left: -20px;
+  margin-right: -20px;
   /*max-width: 700px;*/
 }
 div.output_area {
@@ -180,20 +181,30 @@ div.output_area {
   padding: 2px 4px;
   border-radius:4px;
   /*background:#f7f7f7;*/
-  margin-left: 20px;
+  margin-left: -20px;
+  margin-right: -20px;
   /*max-width: 700px;*/
 }
 
 div.output_prompt {
   /* 5px right shift to account for margin in parent container */
   /*margin: 0 -5px 0 0px;*/
-  margin-left: -22px;
+  margin-left: -3px;
+  color: #006400;
+}
+
+div.input_prompt {
+  /* 5px right shift to account for margin in parent container */
+  /*margin: 0 -5px 0 0px;*/
+  margin-left: -20px;
+  color: #FF8C00;
 }
 
 div.text_cell_render {
   /*padding: 0px;*/
   /*color: #111111;*/
-  margin-left: -23px;
+  margin-left: -20px;
+  margin-right: -20px;
 }
 
 /*code,
