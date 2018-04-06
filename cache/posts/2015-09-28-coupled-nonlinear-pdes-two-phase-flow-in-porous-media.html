@@ -11726,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11749,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11773,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11782,8 +11779,8 @@ div#notebook {
 We are going to use the above equation to linearize the following equations, which describe the two phase flow (oil, and water) in porous media. We ignore the gravity term and assume that the fluids and the porous medium are incompressible: $$\nabla.\left(-k\left(\frac{k_{rw}\left(S_{w}\right)}{\mu_{w}}+\frac{k_{ro}\left(S_{w}\right)}{\mu_{o}}\right)\nabla p\right)=0,$$ and $$\varphi\frac{\partial S_{w}}{\partial t}+\nabla.\left(-\frac{k_{rw}\left(S_{w}\right)k}{\mu_{w}}\nabla p\right)=0.$$
 The linearized form, after some algebraic operations, read $$\nabla.\left(-k\left(\frac{k_{rw}\left(S_{w,0}\right)}{\mu_{w}}+\frac{k_{ro}\left(S_{w,0}\right)}{\mu_{o}}\right)\nabla p\right)+\\\nabla.\left(k\left(\frac{\partial k_{rw}\left(S_{w,0}\right)}{\mu_{w}\partial S_{w}}+\frac{\partial k_{ro}\left(S_{w,0}\right)}{\mu_{o}\partial S_{w}}\right)\nabla p_{0}S_{w}\right)=\\\nabla.\left(k\left(\frac{\partial k_{rw}\left(S_{w,0}\right)}{\mu_{w}\partial S_{w}}+\frac{\partial k_{ro}\left(S_{w,0}\right)}{\mu_{o}\partial S_{w}}\right)\nabla p_{0}S_{w,0}\right)$$ and $$\varphi\frac{\partial S_{w}}{\partial t}+\nabla.\left(-\frac{k_{rw}\left(S_{w,0}\right)k}{\mu_{w}}\nabla p\right)+\\\nabla.\left(-\frac{k}{\mu_{w}}\frac{\partial k_{rw}\left(S_{w,0}\right)}{\partial S_{w}}\nabla p_{0}S_{w}\right)=\\\nabla.\left(-\frac{k}{\mu_{w}}\frac{\partial k_{rw}\left(S_{w,0}\right)}{\partial S_{w}}\nabla p_{0}S_{w,0}\right)$$
 We will discretize the above equations using the FVTool, which gives us a system of linear equations, i.e., $$\left[\begin{array}{cc}
-J_{p1}+M_{bc,p} & J_{S_{w}1}\\
-J_{p2} & J_{S_{w}2}+M_{bc,S_{w}}
+J_{p1}+M_{bc,p} &amp; J_{S_{w}1}\\
+J_{p2} &amp; J_{S_{w}2}+M_{bc,S_{w}}
 \end{array}\right]\left[\begin{array}{c}
 \mathbf{p}\\
 \mathbf{S_{w}}
@@ -11816,7 +11813,9 @@ FVToolStartUp()
 
 
 <div class="output_area">
+
 <div class="prompt output_prompt">Out[8]:</div>
+
 
 
 
@@ -11833,8 +11832,7 @@ FiniteVolumeToolbox has started successfully.
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11878,7 +11876,9 @@ legend(&#39;water&#39;, &#39;oil&#39;);
 
 
 <div class="output_area">
+
 <div class="prompt"></div>
+
 
 
 
@@ -12152,19 +12152,20 @@ YII=
 </div>
 
 <div class="output_area">
+
 <div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
+
 </div>
 
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12212,7 +12213,9 @@ title(&#39;Permeability field&#39;)
 
 
 <div class="output_area">
+
 <div class="prompt"></div>
+
 
 
 
@@ -13683,19 +13686,20 @@ BAAAkqEUAQCAZChFAAAgGUoRAABIhlIEAACS/T/ViPRWlR7e2wAAAABJRU5ErkJggg==
 </div>
 
 <div class="output_area">
+
 <div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
+
 </div>
 
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13732,19 +13736,20 @@ p = p_old;
 
 
 <div class="output_area">
+
 <div class="prompt output_prompt">Out[11]:</div>
 
 
 
 
+
 </div>
 
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13775,19 +13780,20 @@ uw = -gradientTerm(p_old); % an estimation of the water velocity
 
 
 <div class="output_area">
+
 <div class="prompt output_prompt">Out[12]:</div>
 
 
 
 
+
 </div>
 
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13859,7 +13865,9 @@ visualizeCells(sw);shading interp;
 
 
 <div class="output_area">
+
 <div class="prompt"></div>
+
 
 
 
@@ -14726,19 +14734,20 @@ ZowpMhgMBsOaMabIYDAYDGvGmCKDwWAwrBljigwGg8GwZowpMhgMBsOaMabIYDAYDGvmPwL2uMDy
 </div>
 
 <div class="output_area">
+
 <div class="prompt output_prompt">Out[13]:</div>
 
 
 
 
+
 </div>
 
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">

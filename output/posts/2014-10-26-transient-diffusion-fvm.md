@@ -2,7 +2,7 @@
 .. title: 2D transient diffusion equation; numerical FVM solution
 .. slug: 2014-10-26-transient-diffusion-fvm
 .. date: 2014-10-26 22:35:13 UTC+01:00
-.. tags: heat conduction, diffusion
+.. tags: mathjax, heat conduction, diffusion
 .. category: [Diffusion, Transient, FVM]
 .. link: 
 .. description: 

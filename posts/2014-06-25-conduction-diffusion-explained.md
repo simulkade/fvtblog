@@ -2,7 +2,7 @@
 .. title: Conduction and diffusion: a brief tutorial
 .. slug: 2014-06-25-conduction-diffusion-explained
 .. date: 2014-06-25 22:35:13 UTC+01:00
-.. tags: heat conduction, diffusion
+.. tags: mathjax, heat conduction, diffusion
 .. category: [FVM, heat conduction, diffusion, Robin] 
 .. link: 
 .. description: 
