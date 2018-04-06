@@ -2,7 +2,7 @@
 .. title: A simple finite volume toolbox for Matlab
 .. slug: 2014-05-20-a-simple-finite-volume-toolbox-for-matlab
 .. date: 2014-05-20 22:35:13 UTC+01:00
-.. tags: 
+.. tags: mathjax
 .. category: [FVM, Matlab] 
 .. link: 
 .. description: 
@@ -40,7 +40,7 @@ $$ \alpha\frac{\partial\phi}{\partial t}+\nabla.\left(\mathbf{u}\phi\right)+\nab
 
 with the following general (Robin) boundary condition:
 
-$$a\nabla\phi.\mathbf{n}+b\phi=c.$$
+$$a\nabla\phi.\mathbf{e}+b\phi=c.$$
 
 All of the coefficients can be defined explicitly for each control volume or on the surface of a control volume.
 

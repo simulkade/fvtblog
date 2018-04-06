@@ -292,7 +292,7 @@ This is a snapshot of the 3D result:</p>
 <p>We solve this general form of transient convection-diffusion equation:</p>
 <p>$$ \alpha\frac{\partial\phi}{\partial t}+\nabla.\left(\mathbf{u}\phi\right)+\nabla.\left(-D\nabla\phi\right)+\beta\phi=\gamma$$ </p>
 <p>with the following general (Robin) boundary condition:</p>
-<p>$$a\nabla\phi.\mathbf{n}+b\phi=c.$$</p>
+<p>$$a\nabla\phi.\mathbf{e}+b\phi=c.$$</p>
 <p>All of the coefficients can be defined explicitly for each control volume or on the surface of a control volume.</p>
 <h3>Where to find/How to use 'the code'?</h3>
 <p>You can download the code from this github repository (click on the <code>download zip</code> button): <a href="https://github.com/simulkade/FVTool">FVTool</a>
@@ -343,7 +343,19 @@ With the following command, you can see a short document that introduces you to 
 <li class="previous">
                 <a href="index-2.html" rel="prev">Newer posts</a>
             </li>
-        </ul></nav><script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2017         <a href="mailto:a.a.eftekhari@outlook.com">Ali A. Eftekhari</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         </p>
+        </ul></nav><script>var disqus_shortname="fvtool";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'center' to center equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><footer id="footer"><p>Contents © 2018         <a href="mailto:a.a.eftekhari@outlook.com">Ali A. Eftekhari</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         </p>
             
         </footer>
 </div>
