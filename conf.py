@@ -131,6 +131,7 @@ NAVIGATION_LINKS = {
 
 # Name of the theme to use.
 THEME = "lanyon"
+# THEME = "bootstrap4"
 
 # Below this point, everything is optional
 
@@ -735,7 +736,7 @@ MathJax.Hub.Config({
 # IPYNB_CONFIG = {}
 # With the following example configuration you can use a custom jinja template
 # called `toggle.tpl` which has to be located in your site/blog main folder:
-# IPYNB_CONFIG = {'Exporter':{'template_file': 'toggle'}}
+#IPYNB_CONFIG = {'Exporter':{'template_file': 'toggle'}}
 
 # What Markdown extensions to enable?
 # You will also get gist, nikola and podcast because those are
@@ -775,7 +776,7 @@ SOCIAL_BUTTONS_CODE = ""
 
 # Modify the number of Post per Index Page
 # Defaults to 10
-INDEX_DISPLAY_POST_COUNT = 3
+INDEX_DISPLAY_POST_COUNT = 1
 
 # By default, Nikola generates RSS files for the website and for tags, and
 # links to it.  Set this to False to disable everything RSS-related.
@@ -802,20 +803,20 @@ INDEX_DISPLAY_POST_COUNT = 3
 # This search form works for any site and looks good in the "site" theme where
 # it appears on the navigation bar:
 #
-SEARCH_FORM = """
-<!-- Custom search -->
-<form method="get" id="search" action="//duckduckgo.com/"
- class="navbar-form pull-left">
-<input type="hidden" name="sites" value="%s"/>
-<input type="hidden" name="k8" value="#444444"/>
-<input type="hidden" name="k9" value="#D51920"/>
-<input type="hidden" name="kt" value="h"/>
-<input type="text" name="q" maxlength="255"
- placeholder="Search&hellip;" class="span2" style="margin-top: 4px;"/>
-<input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
-</form>
-<!-- End of custom search -->
-""" % SITE_URL
+#SEARCH_FORM = """
+#<!-- Custom search -->
+#<form method="get" id="search" action="//duckduckgo.com/"
+# class="navbar-form pull-left">
+#<input type="hidden" name="sites" value="%s"/>
+#<input type="hidden" name="k8" value="#444444"/>
+#<input type="hidden" name="k9" value="#D51920"/>
+#<input type="hidden" name="kt" value="h"/>
+#<input type="text" name="q" maxlength="255"
+# placeholder="Search&hellip;" class="span2" style="margin-top: 4px;"/>
+#<input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+#</form>
+#<!-- End of custom search -->
+#""" % SITE_URL
 #
 # If you prefer a Google search form, here's an example that should just work:
 # SEARCH_FORM = """
@@ -848,18 +849,18 @@ SEARCH_FORM = """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
 # (translatable)
-BODY_END = """
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51207335-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
-"""
+#BODY_END = """
+#<script>
+#  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+#  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+#  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+#  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+#
+#  ga('create', 'UA-51207335-2', 'auto');
+#  ga('send', 'pageview');
+#
+#</script>
+#"""
 
 # The possibility to extract metadata from the filename by using a
 # regular expression.
@@ -878,7 +879,7 @@ BODY_END = """
 
 # If you hate "Filenames with Capital Letters and Spaces.md", you should
 # set this to true.
-UNSLUGIFY_TITLES = True
+FILE_METADATA_UNSLUGIFY_TITLES = True
 
 # Additional metadata that is added to a post when creating a new_post
 # ADDITIONAL_METADATA = {}

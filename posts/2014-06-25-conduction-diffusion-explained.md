@@ -1,12 +1,11 @@
-<!-- 
+<!--
 .. title: Conduction and diffusion: a brief tutorial
 .. slug: 2014-06-25-conduction-diffusion-explained
 .. date: 2014-06-25 22:35:13 UTC+01:00
-.. tags: mathjax, heat conduction, diffusion
+.. tags: heat conduction, diffusion
 .. category: [FVM, heat conduction, diffusion, Robin] 
-.. link: 
-.. description: 
 .. type: text
+.. has_math: yes
 -->
 
 **Important Update**: the codes in this post will not work with the new version of FVTool. Download the old version of FVTool [here](https://github.com/simulkade/FVTool/archive/v0.11.zip).

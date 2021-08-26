@@ -1,12 +1,11 @@
-<!-- 
+<!--
 .. title: A simple finite volume toolbox for Matlab
 .. slug: 2014-05-20-a-simple-finite-volume-toolbox-for-matlab
 .. date: 2014-05-20 22:35:13 UTC+01:00
-.. tags: mathjax
+.. tags: 
 .. category: [FVM, Matlab] 
-.. link: 
-.. description: 
 .. type: text
+.. has_math: yes
 -->
 
 # An introduction to a Matlab FVM (toy) toolbox

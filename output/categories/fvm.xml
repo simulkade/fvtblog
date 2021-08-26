@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>FVTool (Posts about FVM)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link rel="self" type="application/rss+xml" href="http://fvt.simulkade.com/categories/fvm.xml"></atom:link><language>en</language><lastBuildDate>Fri, 06 Apr 2018 11:01:39 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Choosing the right cell averaging method for linearized PDEs</title><link>http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FVTool (Posts about FVM)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link href="http://fvt.simulkade.com/categories/fvm.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Thu, 26 Aug 2021 13:24:14 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Choosing the right cell averaging method for linearized PDEs</title><link>http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Choosing-the-right-averaging-method"&gt;Choosing the right averaging method&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Another-look-at-the-equations"&gt;Another look at the equations&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Implementation"&gt;Implementation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Definition-of-functions-in-JFVM"&gt;Definition of functions in JFVM&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Linearized-PDE-%28Newton-method%29"&gt;Linearized PDE (Newton method)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Direct-substitution"&gt;Direct substitution&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-1:-upwind-convection-with-arithmetic-average"&gt;Case 1: upwind convection with arithmetic average&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-2:-central-convection-with-arithmetic-average"&gt;Case 2: central convection with arithmetic average&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-3:-central-convection-with-linear-average"&gt;Case 3: central convection with linear average&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-4:-upwind-convection-with-upwind-average"&gt;Case 4: upwind convection with upwind average&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Choosing-the-right-averaging-method"&gt;Choosing the right averaging method&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Another-look-at-the-equations"&gt;Another look at the equations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Implementation"&gt;Implementation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Definition-of-functions-in-JFVM"&gt;Definition of functions in JFVM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Linearized-PDE-%28Newton-method%29"&gt;Linearized PDE (Newton method)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Direct-substitution"&gt;Direct substitution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-1:-upwind-convection-with-arithmetic-average"&gt;Case 1: upwind convection with arithmetic average&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-2:-central-convection-with-arithmetic-average"&gt;Case 2: central convection with arithmetic average&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-3:-central-convection-with-linear-average"&gt;Case 3: central convection with linear average&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-4:-upwind-convection-with-upwind-average"&gt;Case 4: upwind convection with upwind average&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -25,16 +21,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Choosing-the-right-averaging-method"&gt;Choosing the right averaging method&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Choosing-the-right-averaging-method"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="Choosing-the-right-averaging-method"&gt;Choosing the right averaging method&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Choosing-the-right-averaging-method"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In the previous post, I discussed a linearization procedure that could be used to solve a nonlinear diffusion equation. We saw that the linearization converted the nonlinear diffusion equation to a PDE with linear diffusion and convection terms. Here, I'm going to solve that equation again, but this time on a nonuniform mesh. My objective is to see what happens if we choose an averaging term that is not consistent with the chosen method for the discretization of the convection term.&lt;/p&gt;
 
@@ -42,16 +36,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Another-look-at-the-equations"&gt;Another look at the equations&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Another-look-at-the-equations"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Another-look-at-the-equations"&gt;Another look at the equations&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Another-look-at-the-equations"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The equation that we solved was 
 $$\frac{\partial\phi}{\partial t}+\nabla . (-D(\phi)\nabla \phi) =0$$ 
@@ -89,16 +81,14 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Implementation"&gt;Implementation&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Implementation"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Implementation"&gt;Implementation&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Implementation"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;I'm repeating the nonlinear diffusion model of the previous post, this time on a nonuniform grid. Two functions are created: the direct substitution, which is assumed to give the right solution, and a linearized equation, with the possibility of using central difference or upwind convection discretization and linear, upwind, and arithmetic averaging methods.&lt;/p&gt;
 
@@ -106,10 +96,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Definition-of-functions-in-JFVM"&gt;Definition of functions in JFVM&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Definition-of-functions-in-JFVM"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Definition-of-functions-in-JFVM"&gt;Definition of functions in JFVM&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Definition-of-functions-in-JFVM"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -121,7 +110,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;div class=" highlight hl-julia"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;JFVM&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PyPlot&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -131,7 +120,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stderr output_text"&gt;
@@ -145,10 +134,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Linearized-PDE-(Newton-method)"&gt;Linearized PDE (Newton method)&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Linearized-PDE-(Newton-method)"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Linearized-PDE-(Newton-method)"&gt;Linearized PDE (Newton method)&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Linearized-PDE-(Newton-method)"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -233,7 +221,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;span class="k"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -243,7 +231,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
 
 
 
@@ -259,10 +247,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Direct-substitution"&gt;Direct substitution&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Direct-substitution"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Direct-substitution"&gt;Direct substitution&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Direct-substitution"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -326,7 +313,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;span class="k"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -336,7 +323,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
 
 
 
@@ -352,10 +339,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Case-1:-upwind-convection-with-arithmetic-average"&gt;Case 1: upwind convection with arithmetic average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-1:-upwind-convection-with-arithmetic-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Case-1:-upwind-convection-with-arithmetic-average"&gt;Case 1: upwind convection with arithmetic average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-1:-upwind-convection-with-arithmetic-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -371,10 +357,10 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;"direct subs"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Newton"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Upwind/Arithmetic"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"x"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -384,7 +370,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -400,8 +386,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;As you can see, the converged solution of the Newton method, which uses inconsistent convection/averaging terms does not match the solution of the direct substitution solver.&lt;/p&gt;
 
@@ -409,10 +394,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Case-2:-central-convection-with-arithmetic-average"&gt;Case 2: central convection with arithmetic average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-2:-central-convection-with-arithmetic-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Case-2:-central-convection-with-arithmetic-average"&gt;Case 2: central convection with arithmetic average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-2:-central-convection-with-arithmetic-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -428,10 +412,10 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;"direct subs"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Newton"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Central/arithmetic"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"x"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -441,7 +425,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -457,8 +441,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Again, choosing the inconsistent methods results in an erroneous solution (for the Newton method).&lt;/p&gt;
 
@@ -466,10 +449,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Case-3:-central-convection-with-linear-average"&gt;Case 3: central convection with linear average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-3:-central-convection-with-linear-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Case-3:-central-convection-with-linear-average"&gt;Case 3: central convection with linear average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-3:-central-convection-with-linear-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -485,10 +467,10 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;"direct subs"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Newton"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Central/linear"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"x"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -498,7 +480,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -514,8 +496,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Beautiful! The results match perfectly.&lt;/p&gt;
 
@@ -523,10 +504,9 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Case-4:-upwind-convection-with-upwind-average"&gt;Case 4: upwind convection with upwind average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html#Case-4:-upwind-convection-with-upwind-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Case-4:-upwind-convection-with-upwind-average"&gt;Case 4: upwind convection with upwind average&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/#Case-4:-upwind-convection-with-upwind-average"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -542,10 +522,10 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 &lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;"direct subs"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"Newton"&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Upwind/upwind"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"x"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;L&lt;/span&gt;&lt;span class="s"&gt;"\phi"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fontsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -555,7 +535,7 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -571,14 +551,20 @@ Here's the trick: on the left hand side, we have, from left to right, a transien
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;Again, we get the correct result by choosing a right pair of discretization/averaging methods. Depending on the Peclet number (convective to diffusive rate ratio), using the upwind method gives a numerically more stable solution.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>FVM</category><guid>http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html</guid><pubDate>Mon, 20 Apr 2015 15:09:58 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>FVM</category><guid>http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm/</guid><pubDate>Mon, 20 Apr 2015 15:09:58 GMT</pubDate></item><item><title>Solving nonlinear PDEs with FVM</title><link>http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm/</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;There are many cases where the transfer coefficient in the convection-diffusion equations is a function of the independent variable. This makes the PDE nonlinear. While working on my thesis, I realized that it is not that difficult to use the Taylor expansion to linearize the nonlinear terms in a PDE. Here, I'm going to give a simple example. In another post, I will explain how the same idea can be used to numerically solve the Buckley-Leverett equation.&lt;/p&gt;
+&lt;h3 id="The-PDE"&gt;The PDE&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm/#The-PDE"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I'm going to try a simple one here. I say try because I'm actually making it up right now. The equation reads $$\frac{\partial\phi}{\partial t}+\nabla . (-D\nabla \phi) =0$$ where $$D=D_0(1+\phi^2).$$ It means that the diffusion coefficient is increased when the concentration of the solute increases.&lt;br&gt;
+To linearize this equation, I assume that $\phi$ and $\nabla \phi$ are independent variables. Using Taylor expansion around a point $\phi_0$, we can obtain the following general form: $$f\left(\phi\right)\nabla \phi=f\left(\phi_{0}\right)\nabla \phi+\nabla \phi_{0}\left(\frac{\partial f}{\partial \phi}\right)_{\phi_{0}}\left(\phi-\phi_{0}\right).$$ In our case, this equation simplifies to $$D_0(1+\phi^2)\nabla \phi=D_0(1+\phi_0^2)\nabla \phi+2D_0\phi_0\nabla \phi_0(\phi-\phi_0).$$ Putting back everythin together, we obtain this linearized form for our PDE $$\frac{\partial\phi}{\partial t}+\nabla.(-D_{0}(1+\phi_{0}^{2})\nabla\phi)+\nabla.(-2D_{0}\phi_{0}\nabla\phi_{0}\phi)=\nabla.(-2D_{0}\phi_{0}\nabla\phi_{0}\phi_{0}).$$ Don't freak out! This equation is actually quite simple. By linearizing, we have added a linear convection term to our nonlinear diffusion equation. This equation is still an approximation of the real PDE. We have to solve the linear equation for $\phi$ by initializing $\phi_0$. Then, we assign the new value of $\phi$ to $\phi_0$ until it converges to a solution. The question that still remains is that "is this really a good idea to make a diffusion equation more complicated by adding a convection term to it?".&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm/"&gt;Read more…&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</description><category>FVM</category><guid>http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm/</guid><pubDate>Mon, 06 Apr 2015 14:51:37 GMT</pubDate></item></channel></rss>
