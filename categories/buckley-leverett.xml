@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>FVTool (Posts about Buckley-Leverett)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link rel="self" type="application/rss+xml" href="http://fvt.simulkade.com/categories/buckley-leverett.xml"></atom:link><language>en</language><lastBuildDate>Fri, 06 Apr 2018 11:01:38 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Coupled nonlinear PDEs: two phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FVTool (Posts about Buckley-Leverett)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link href="http://fvt.simulkade.com/categories/buckley-leverett.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Thu, 26 Aug 2021 13:24:15 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Coupled nonlinear PDEs: two phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In this post, I'm going to quickly explain how to solve a system of nonlinear equations. In the previous posts (&lt;a href="http://fvt.simulkade.com/posts/2015-04-06-solving-nonlinear-pdes-with-fvm.html"&gt;here&lt;/a&gt; and &lt;a href="http://fvt.simulkade.com/posts/2015-04-20-choosing-the-right-averaging-method-for-fvm.html"&gt;here&lt;/a&gt;), I explained how to linearize a nonlinear PDE. Now, we are going to linearize two PDEs, which means we need to use the Taylor expansion again, which for a function with two independent variables reads: $$f\left(x,y\right)=f\left(x_{0},y_{0}\right)+\frac{\partial f}{\partial x}\left(x_{0},y_{0}\right)\left(x-x_{0}\right)+\frac{\partial f}{\partial y}\left(x_{0},y_{0}\right)\left(y-y_{0}\right)+h.o.t$$
 We are going to use the above equation to linearize the following equations, which describe the two phase flow (oil, and water) in porous media. We ignore the gravity term and assume that the fluids and the porous medium are incompressible: $$\nabla.\left(-k\left(\frac{k_{rw}\left(S_{w}\right)}{\mu_{w}}+\frac{k_{ro}\left(S_{w}\right)}{\mu_{o}}\right)\nabla p\right)=0,$$ and $$\varphi\frac{\partial S_{w}}{\partial t}+\nabla.\left(-\frac{k_{rw}\left(S_{w}\right)k}{\mu_{w}}\nabla p\right)=0.$$
@@ -35,7 +31,7 @@ cd('/home/ali/MyPackages/FVTool/')
 FVToolStartUp()
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -45,7 +41,7 @@ FVToolStartUp()
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
 
 
 
@@ -64,10 +60,9 @@ FiniteVolumeToolbox has started successfully.
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Rel-perm-curves"&gt;Rel-perm curves&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html#Rel-perm-curves"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;First, we need to define the relative permeability functions, and their derivatives. I then plot the functions, just for the fun of it.&lt;/p&gt;
+&lt;h3 id="Rel-perm-curves"&gt;Rel-perm curves&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/#Rel-perm-curves"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;First, we need to define the relative permeability functions, and their derivatives. I then plot the functions, just for the fun of it.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -98,7 +93,7 @@ ylabel('Rel-perms')
 legend('water', 'oil');
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -108,7 +103,7 @@ legend('water', 'oil');
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -121,7 +116,7 @@ legend('water', 'oil');
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
 
 
 
@@ -134,10 +129,9 @@ legend('water', 'oil');
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Create-the-mesh"&gt;Create the mesh&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html#Create-the-mesh"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Now, we create a mesh and initialize all the variables over the mesh, except for pressure and saturation. I use a large value of Dykstra-Parsons coefficient to create a hetrogeneous permeability field. Let's visualize it as well.&lt;/p&gt;
+&lt;h3 id="Create-the-mesh"&gt;Create the mesh&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/#Create-the-mesh"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Now, we create a mesh and initialize all the variables over the mesh, except for pressure and saturation. I use a large value of Dykstra-Parsons coefficient to create a hetrogeneous permeability field. Let's visualize it as well.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -172,7 +166,7 @@ visualizeCells(k);
 title('Permeability field')
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -182,7 +176,7 @@ title('Permeability field')
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -195,7 +189,7 @@ title('Permeability field')
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
 
 
 
@@ -208,10 +202,9 @@ title('Permeability field')
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Define-the-boundary-and-initial-conditions"&gt;Define the boundary and initial conditions&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html#Define-the-boundary-and-initial-conditions"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;We want to solve a problem, where the domain is initially saturated with oil (Sw=0). We inject water (Sw=1) from the left boundary, with an injection pressure of 50 bar. The right boundary is at a constant pressure of 1 bar.&lt;/p&gt;
+&lt;h3 id="Define-the-boundary-and-initial-conditions"&gt;Define the boundary and initial conditions&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/#Define-the-boundary-and-initial-conditions"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;We want to solve a problem, where the domain is initially saturated with oil (Sw=0). We inject water (Sw=1) from the left boundary, with an injection pressure of 50 bar. The right boundary is at a constant pressure of 1 bar.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -235,7 +228,7 @@ sw = sw_old;
 p = p_old;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -245,7 +238,7 @@ p = p_old;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[11]:&lt;/div&gt;
 
 
 
@@ -258,10 +251,9 @@ p = p_old;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Define-the-nonlinear-solver-specifications"&gt;Define the nonlinear solver specifications&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html#Define-the-nonlinear-solver-specifications"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;We don't use a nonlinear solver. We write one. The accuracies are defined below:&lt;/p&gt;
+&lt;h3 id="Define-the-nonlinear-solver-specifications"&gt;Define the nonlinear solver specifications&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/#Define-the-nonlinear-solver-specifications"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;We don't use a nonlinear solver. We write one. The accuracies are defined below:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -279,7 +271,7 @@ eps_sw = 1e-5; % saturation accuracy
 uw = -gradientTerm(p_old); % an estimation of the water velocity
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -289,7 +281,7 @@ uw = -gradientTerm(p_old); % an estimation of the water velocity
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
 
 
 
@@ -302,10 +294,9 @@ uw = -gradientTerm(p_old); % an estimation of the water velocity
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Main-loop"&gt;Main loop&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html#Main-loop"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here we write the external time loop and the internal nonlinear solver loop. I've played with the time steps a bit to find a suitable value. You can adapt the time step inside the loop if you prefer.&lt;/p&gt;
+&lt;h3 id="Main-loop"&gt;Main loop&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/#Main-loop"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here we write the external time loop and the internal nonlinear solver loop. I've played with the time steps a bit to find a suitable value. You can adapt the time step inside the loop if you prefer.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -364,7 +355,7 @@ end
 visualizeCells(sw);shading interp;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -374,7 +365,7 @@ visualizeCells(sw);shading interp;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -387,7 +378,7 @@ visualizeCells(sw);shading interp;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
 
 
 
@@ -400,15 +391,14 @@ visualizeCells(sw);shading interp;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;This is a very simple example. There are a few functions that I have used here, like &lt;code&gt;reshapeCell&lt;/code&gt; which should be explained later in the documents. All in all, we could show that with a few lines of code, we have solved a system of nonlinear coupled equations using a fully implicit scheme. Now, I'm going to watch the lunar eclipse! &lt;a href="https://github.com/simulkade/FVTool/blob/master/Examples/Advanced/BL2Dcoupled.m"&gt;Here&lt;/a&gt;, you can find the full Matlab/Octave code for the above problem.&lt;/p&gt;
-&lt;h3 id="Exciting-news"&gt;Exciting news&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html#Exciting-news"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://github.com/KaiSchu"&gt;Kai Schüller&lt;/a&gt; has solved a phase change problem using the FVTool. You can find his implemetation &lt;a href="https://github.com/simulkade/FVTool/tree/master/Examples/External/PhaseChangeEnthalpyMethod"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="Exciting-news"&gt;Exciting news&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/#Exciting-news"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://github.com/KaiSchu"&gt;Kai Schüller&lt;/a&gt; has solved a phase change problem using the FVTool. You can find his implemetation &lt;a href="https://github.com/simulkade/FVTool/tree/master/Examples/External/PhaseChangeEnthalpyMethod"&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>Buckley-Leverett</category><category>Fully implicit</category><guid>http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media.html</guid><pubDate>Sun, 27 Sep 2015 21:41:16 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>Buckley-Leverett</category><category>Fully implicit</category><guid>http://fvt.simulkade.com/posts/2015-09-28-coupled-nonlinear-pdes-two-phase-flow-in-porous-media/</guid><pubDate>Sun, 27 Sep 2015 21:41:16 GMT</pubDate></item></channel></rss>

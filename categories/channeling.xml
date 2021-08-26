@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>FVTool (Posts about channeling)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link rel="self" type="application/rss+xml" href="http://fvt.simulkade.com/categories/channeling.xml"></atom:link><language>en</language><lastBuildDate>Fri, 06 Apr 2018 11:01:39 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Convection-diffusion in single-phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FVTool (Posts about channeling)</title><link>http://fvt.simulkade.com/</link><description></description><atom:link href="http://fvt.simulkade.com/categories/channeling.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><lastBuildDate>Thu, 26 Aug 2021 13:24:14 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Convection-diffusion in single-phase flow in porous media</title><link>http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/</link><dc:creator>Ali A. Eftekhari</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Fingering-and-channeling"&gt;Fingering and channeling&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Fingering-and-channeling"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;For single-phase flow in porous media, the mobility of a the fluid is defined by $k/\mu$, i.e., permeability (which is a property of the porous medium) over viscosity (a property of the fluid). Fingering and channeling terms refer to a phenomenon, where a fluid moves faster than the fluid in its surrounding zones due to the higher mobility in that particular zone of the porous medium. If this higher mobility is due to a higher permeability of the zone, the phenomenon is called channeling, and if the higher mobility is due to a lower viscosity, it is called fingering. Unlike channeling, viscous fingering can happen in an ideal homogeneous field. To initialize the fingers in numerical simulations, we often perturb slightly the permeability field. The other day, my supervisor ask me to investigate if this perturbation can indeed cause channeling in my simulations. One way to make a distinction between these two phenomenon is a tracer test, in which we inject a single phase fluid with a known concentration of a tracer into a heterogeneous field, saturated with the same fluid with zero concentration of the tracer. The concentration of the tracer does not change the properties of the fluid. We gradually increase the heterogeneity and observe its effect on the propagation of the concentration profile. We want to be certain that the small perturbation that we use to initialize the fingers does not lead to channeling phenomenon.&lt;/p&gt;
-&lt;h3 id="Single-phase-flow-in-porous-media"&gt;Single-phase flow in porous media&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Single-phase-flow-in-porous-media"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Flow of a Newtonian fluid in porous media is governed by the Darcy's law, which is basically an empirical relation between the permeability of the porous medium ($k$), the viscosity of the fluid ($\mu$), the superficial velocity of the fluid ($u$), and the pressure gradient ($\nabla p$): $$\mathbf{u}=-\frac{k}{\mu}\nabla p$$
+&lt;h3 id="Fingering-and-channeling"&gt;Fingering and channeling&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/#Fingering-and-channeling"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;For single-phase flow in porous media, the mobility of a the fluid is defined by $k/\mu$, i.e., permeability (which is a property of the porous medium) over viscosity (a property of the fluid). Fingering and channeling terms refer to a phenomenon, where a fluid moves faster than the fluid in its surrounding zones due to the higher mobility in that particular zone of the porous medium. If this higher mobility is due to a higher permeability of the zone, the phenomenon is called channeling, and if the higher mobility is due to a lower viscosity, it is called fingering. Unlike channeling, viscous fingering can happen in an ideal homogeneous field. To initialize the fingers in numerical simulations, we often perturb slightly the permeability field. The other day, my supervisor ask me to investigate if this perturbation can indeed cause channeling in my simulations. One way to make a distinction between these two phenomenon is a tracer test, in which we inject a single phase fluid with a known concentration of a tracer into a heterogeneous field, saturated with the same fluid with zero concentration of the tracer. The concentration of the tracer does not change the properties of the fluid. We gradually increase the heterogeneity and observe its effect on the propagation of the concentration profile. We want to be certain that the small perturbation that we use to initialize the fingers does not lead to channeling phenomenon.&lt;/p&gt;
+&lt;h3 id="Single-phase-flow-in-porous-media"&gt;Single-phase flow in porous media&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/#Single-phase-flow-in-porous-media"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Flow of a Newtonian fluid in porous media is governed by the Darcy's law, which is basically an empirical relation between the permeability of the porous medium ($k$), the viscosity of the fluid ($\mu$), the superficial velocity of the fluid ($u$), and the pressure gradient ($\nabla p$): $$\mathbf{u}=-\frac{k}{\mu}\nabla p$$
 For the flow of an incompressible single-phase fluid, the continuity equation reads $$\nabla.\mathbf{u}=\nabla.(-\frac{k}{\mu}\nabla p)=0$$
 Finally, the convection-diffusion equation in porous media is defined by $$\varphi \frac{\partial c}{\partial t}+\nabla.(\mathbf{u}c-\varphi D \nabla c) =0,$$ where $\varphi$ is the porosity, $c$ is the concentration of the tracer or solute in mole per unit volume of the fluid, and $D$ is the diffusion coefficient.
 The initial condition is zero concentration, and the boundaries are Dirichlet on the left border, and Neumann on the right border.&lt;br&gt;
@@ -25,16 +21,15 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 &lt;div class=" highlight hl-julia"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;JFVM&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PyPlot&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Find-the-pressure-profile"&gt;Find the pressure profile&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Find-the-pressure-profile"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;First, we solve the diffusion equation to find the pressure profile. Then, we will use the pressure gradient to find the velocity vector. The velocity vector will be part of the convection-diffusion equation.&lt;/p&gt;
+&lt;h3 id="Find-the-pressure-profile"&gt;Find the pressure profile&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/#Find-the-pressure-profile"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;First, we solve the diffusion equation to find the pressure profile. Then, we will use the pressure gradient to find the velocity vector. The velocity vector will be part of the convection-diffusion equation.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -92,7 +87,7 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 &lt;span class="n"&gt;colorbar&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -102,7 +97,7 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -118,10 +113,9 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Solve-the-convection-diffusion-equation"&gt;Solve the convection-diffusion equation&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Solve-the-convection-diffusion-equation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Now we have the velocity profile, that we will use to define and solve the convection-diffusion equation.&lt;/p&gt;
+&lt;h3 id="Solve-the-convection-diffusion-equation"&gt;Solve the convection-diffusion equation&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/#Solve-the-convection-diffusion-equation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Now we have the velocity profile, that we will use to define and solve the convection-diffusion equation.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -154,7 +148,7 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 &lt;span class="k"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -175,7 +169,7 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"perm field"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -185,7 +179,7 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -201,24 +195,22 @@ The initial condition is zero concentration, and the boundaries are Dirichlet on
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Conclusion"&gt;Conclusion&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Conclusion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;By changing the Dykstra-Parsons coefficient to a higher value, we can observe channeling phenomenon in porous media by looking at the concentration profile. A small value of Dykstra-Parsons, around 0.01, which makes a +/- 3% perturbation in the permeability field does not lead to a channeling phenomenon, and is enough to initialize the fingers. Beautiful figures can be made by assigning a value of 0.7 or 0.8 to the Dyktra-Parsons coefficient (see below)!&lt;br&gt;
+&lt;h3 id="Conclusion"&gt;Conclusion&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/#Conclusion"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;By changing the Dykstra-Parsons coefficient to a higher value, we can observe channeling phenomenon in porous media by looking at the concentration profile. A small value of Dykstra-Parsons, around 0.01, which makes a +/- 3% perturbation in the permeability field does not lead to a channeling phenomenon, and is enough to initialize the fingers. Beautiful figures can be made by assigning a value of 0.7 or 0.8 to the Dyktra-Parsons coefficient (see below)!&lt;br&gt;
 &lt;img src="http://fvt.simulkade.com/tracer-profile.png" alt="tracer profile"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Update-(May-24,-2015)"&gt;Update (May 24, 2015)&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html#Update-(May-24,-2015)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Find the matlab code for the above problem &lt;a href="https://github.com/simulkade/FVTool/blob/master/Examples/Tutorial/tracer_hetrogeneous.m"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="Update-(May-24,-2015)"&gt;Update (May 24, 2015)&lt;a class="anchor-link" href="http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/#Update-(May-24,-2015)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Find the matlab code for the above problem &lt;a href="https://github.com/simulkade/FVTool/blob/master/Examples/Tutorial/tracer_hetrogeneous.m"&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>channeling</category><category>convection</category><category>diffusion</category><category>fingering</category><category>tracer</category><guid>http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media.html</guid><pubDate>Mon, 11 May 2015 21:39:01 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+
+</description><category>channeling</category><category>convection</category><category>diffusion</category><category>fingering</category><category>tracer</category><guid>http://fvt.simulkade.com/posts/2015-05-11-tracer-flow-porous-media/</guid><pubDate>Mon, 11 May 2015 21:39:01 GMT</pubDate></item></channel></rss>
