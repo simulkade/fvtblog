@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://fvt.simulkade.com/</loc>
-  <lastmod>2021-08-26T13:33:00Z</lastmod>
+  <lastmod>2021-08-26T13:47:00Z</lastmod>
  </url>
  <url>
   <loc>http://fvt.simulkade.com/2014/</loc>
@@ -19,14 +19,6 @@
  </url>
  <url>
   <loc>http://fvt.simulkade.com/2017/</loc>
-  <lastmod>2021-08-26T13:24:00Z</lastmod>
- </url>
- <url>
-  <loc>http://fvt.simulkade.com/2019/</loc>
-  <lastmod>2021-08-26T13:24:00Z</lastmod>
- </url>
- <url>
-  <loc>http://fvt.simulkade.com/2021/</loc>
   <lastmod>2021-08-26T13:24:00Z</lastmod>
  </url>
  <url>
@@ -94,14 +86,6 @@
   <lastmod>2021-08-26T13:45:00Z</lastmod>
  </url>
  <url>
-  <loc>http://fvt.simulkade.com/index-11.html</loc>
-  <lastmod>2021-08-26T13:40:00Z</lastmod>
- </url>
- <url>
-  <loc>http://fvt.simulkade.com/index-12.html</loc>
-  <lastmod>2021-08-26T13:39:00Z</lastmod>
- </url>
- <url>
   <loc>http://fvt.simulkade.com/index-2.html</loc>
   <lastmod>2021-08-26T13:45:00Z</lastmod>
  </url>
@@ -119,11 +103,11 @@
  </url>
  <url>
   <loc>http://fvt.simulkade.com/index-6.html</loc>
-  <lastmod>2021-08-26T13:45:00Z</lastmod>
+  <lastmod>2021-08-27T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>http://fvt.simulkade.com/index-7.html</loc>
-  <lastmod>2021-08-26T13:45:00Z</lastmod>
+  <lastmod>2021-08-27T09:13:00Z</lastmod>
  </url>
  <url>
   <loc>http://fvt.simulkade.com/index-8.html</loc>
